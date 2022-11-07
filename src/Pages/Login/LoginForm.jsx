@@ -1,15 +1,20 @@
 import React from 'react'
 import Input from '../../Components/Forms/Input';
 import Button from '../../Components/Forms/Button';
-import {LoginLogo,LinkSenhaPerdida } from './LoginStyles'
+import {LinkSenhaPerdida } from './LoginStyles'
+import {LoginLogo } from '../../Components/GlobalStyles/styles'
 import Logo from '../../Assets/logo.svg'
+import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
   // const [username, setUsername] = React.useState('')
   // const [password, setPassword] = React.useState('')
 
+  const navigate = useNavigate();
+  
   function handleSubmit(event){
     event.preventDefault();
+    navigate('home')
   }
 
   return (

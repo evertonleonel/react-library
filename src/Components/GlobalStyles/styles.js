@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
   * {
@@ -14,9 +14,25 @@ export const GlobalStyles = createGlobalStyle`
   body {
     font-size: 1.6rem;
     font-family: 'Roboto', sans-serif;
-    background-color: var(--cor-cinza-fraco);
+    background-color: #F4F4F4;
   }
 `
 
+export const ContainerMain = styled.main`
+  width: 100%;
+  max-width: 1318px;
+  margin: 24px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+`
 
-
+export const LoginLogo = styled.img`
+  width: 12rem;
+  height: 4.8rem;
+  margin-bottom: 5.6rem;
+  margin-top: 5.6rem ;
+`

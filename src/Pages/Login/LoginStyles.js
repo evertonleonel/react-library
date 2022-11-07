@@ -40,14 +40,6 @@ export const LoginContainer = styled.div`
     align-items: center;
   };
 `
-
-export const LoginLogo = styled.img`
-  width: 12rem;
-  height: 4.8rem;
-  margin-bottom: 5.6rem;
-  margin-top: 5.6rem ;
-`
-
 export const LinkSenhaPerdida = styled.p`
   text-align: left;
   font-size: 1.4rem;
