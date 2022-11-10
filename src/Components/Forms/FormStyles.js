@@ -55,9 +55,15 @@ export const LoginInput = styled.input`
   outline: none;
   background-color:#F1F3F5;
   text-align: left;
-
+  
   &::placeholder {
     color: #868E96;
     font-size: calc(14px, 16px, 19px);
   }
+`
+export const ErrorInput = styled.p`
+  font-size: 1.5rem;
+  color: #fb1;
+  margin-bottom: 5px;
+  margin-left: 10px;
 `
