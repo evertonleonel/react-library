@@ -1,5 +1,4 @@
 export const API_URL = 'http://localhost:5000';
-export const BOOKS_KEY = '@BOOKS';
 
 export function GET_LOGS(body){
   return {
@@ -25,12 +24,7 @@ export function GET_BOOKS(body){
   }
 }
 
-
-export const getBooks = () => {
-  const data = localStorage.getItem(BOOKS_KEY);
+export const getUser = () => {
+  const data = localStorage.getItem('users');
   return data ? JSON.parse(data) : {};
-};
-
-export const saveBooks = (data) => {
-  localStorage.setItem(BOOKS_KEY, JSON.stringify(data));
 };

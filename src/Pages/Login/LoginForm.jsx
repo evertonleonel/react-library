@@ -5,25 +5,13 @@ import Input from '../../Components/Forms/Input';
 import Button from '../../Components/Forms/Button';
 import Logo from '../../Assets/logo.svg';
 import useForm from '../../Hooks/useForm';
-import { GET_LOGS, GET_BOOKS, BOOKS_KEY } from '../../Services/api';
+import { GET_LOGS} from '../../Services/api';
 import { useNavigate } from 'react-router-dom';
 
 const LoginForm = () => {
   const username = useForm();
   const password = useForm();
   const navigate = useNavigate()
-
-  async function pegaLivros(){
-    const {url, options} = GET_BOOKS({ 
-      username:username.value, 
-      password:password.value 
-    })
-
-    const response = await fetch(url,options);
-    const json = await response.json();
-    console.log(json)
-    window.localStorage.setItem(BOOKS_KEY, JSON.stringify(json))
-  }
 
   async function handleSubmit(event){
     event.preventDefault();
@@ -36,15 +24,15 @@ const LoginForm = () => {
 
       const response = await fetch(url,options);
       const json = await response.json();
-      const login =json
+      const login =json;
       
       const found = login.find((login) => 
         login.email === username.value && login.password === password.value);
 
       if(found){
+        window.localStorage.setItem('users', username.value)
         navigate('/home')
-        pegaLivros();
-
+      
       }else{
         alert('Email ou senha incorretos');
       }
