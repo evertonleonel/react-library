@@ -28,6 +28,17 @@ export const ContainerMain = styled.main`
   justify-content: center;
   align-items: center;
   position: relative;
+
+
+  @media (max-width: 920px) {
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+
+@media  (max-width: 630px) {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
 `
 
 export const LoginLogo = styled.img`
@@ -36,3 +47,5 @@ export const LoginLogo = styled.img`
   margin-bottom: 5.6rem;
   margin-top: 5.6rem ;
 `
+
+

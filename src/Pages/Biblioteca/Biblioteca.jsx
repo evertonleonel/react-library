@@ -1,8 +1,15 @@
 import React from 'react'
+import { ContainerMain } from '../../Components/GlobalStyles/styles'
+import Header from '../../Components/Header/Header'
 
 const Biblioteca = () => {
   return (
-    <div>biblioteca</div>
+    <>
+      <Header />
+      <ContainerMain>
+        Biblioteca
+      </ContainerMain>
+    </>
   )
 }
 

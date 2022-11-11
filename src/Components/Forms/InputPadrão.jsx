@@ -1,11 +1,11 @@
 import React from 'react'
-import {LoginInput, ErrorInput} from './FormStyles'
+import {InputGeral, ErrorInput} from './FormStyles'
 
-const Input = ({ type, name, placeholder, value, onChange, error, onBlur }) => {
+const InputPadrão = ({ type, name, placeholder, value, onChange, error, onBlur }) => {
   return(
     <div>
       <label htmlFor={name}></label>
-      <LoginInput 
+      <InputGeral 
         id={name}
         name={name}
         type={type}
@@ -16,7 +16,7 @@ const Input = ({ type, name, placeholder, value, onChange, error, onBlur }) => {
       />
       {error && <ErrorInput>{error}</ErrorInput>}
     </div>
-  )
+    )
 }
 
-export default Input
+export default InputPadrão

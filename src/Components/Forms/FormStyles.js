@@ -3,11 +3,11 @@ import styled from "styled-components";
 export const LoginButton = styled.button`
   width: 100%;
   max-width: 353px;
-  height: 45px;
+  min-height: 45px;
   color: #000000;
-  background-color: #FFC501;
+  background-color:  ${ props => props.cor || '#FFC501'};
 
-  border: none;
+  border:  ${ props => props.border || '1px solid #133052'};
   border-radius: 4px;
   font-weight: bold;
   text-transform: uppercase;
@@ -42,7 +42,6 @@ export const LoginButton = styled.button`
 `
 
 export const LoginInput = styled.input`
-  
   width: 353px;
   height: 51px;
   font-size: 14px;
@@ -61,9 +60,29 @@ export const LoginInput = styled.input`
     font-size: calc(14px, 16px, 19px);
   }
 `
+
 export const ErrorInput = styled.p`
   font-size: 1.5rem;
   color: #fb1;
   margin-bottom: 5px;
   margin-left: 10px;
+`
+
+export const InputGeral = styled.input`
+  width: 100%;
+  max-width: 350px;
+  height: 53px;
+  padding: 16px;
+  background-color:#FFFFFF;
+  color: #133052;
+  text-align: left;
+  font-size: clamp(16px, 18px, 21px);
+  border-radius: 5px;
+  border: 1px solid #133052;
+  outline: none;
+  
+  &::placeholder {
+    color: #133052;
+    font-size: calc(14px, 16px, 19px);
+  }
 `
