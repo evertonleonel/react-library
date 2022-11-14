@@ -70,8 +70,8 @@ export const ErrorInput = styled.p`
 
 export const InputGeral = styled.input`
   width: 100%;
-  max-width: 350px;
-  height: 53px;
+  /* max-width: 350px; */
+  max-height: 53px;
   padding: 16px;
   background-color:#FFFFFF;
   color: #133052;
@@ -86,3 +86,4 @@ export const InputGeral = styled.input`
     font-size: calc(14px, 16px, 19px);
   }
 `
+

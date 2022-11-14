@@ -24,15 +24,15 @@ export function GET_BOOKS(body){
   }
 }
 
-export function BOOKS_POST (formData, body){
+export function BOOKS_POST (body){
   return {
-    url: API_URL + '/books',
+    url: API_URL + '/books/',
     options: {
       method: 'POST',
       headers: {
-        
+        'Content-Type' : 'application/json'
       },
-      body: formData,
+      body: JSON.stringify(body),
     }
   }
 }

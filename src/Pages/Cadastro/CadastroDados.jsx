@@ -1,47 +1,98 @@
 import React from 'react'
 import Button from '../../Components/Forms/Button'
+import TextArea from '../../Components/Forms/TextArea'
 import { InputGeral } from '../../Components/Forms/FormStyles'
 import useForm from '../../Hooks/useForm'
 import useFetch from '../../Hooks/useFetch'
-import { BOOKS_POST } from '../../Services/api'
-
+import { BOOKS_POST} from '../../Services/api'
+import {InputContainer, NovoLivro} from './CadastroStyles'
+import CadastroImagem from './CadastroImagem'
 
 const CadastroDados = () => {
   const titulo = useForm()
   const autor = useForm()
   const genero = useForm()
-  const [img, setImg] = React.useState({});
-  const {data, error, loading, request} = useFetch()
+  const sinopse = useForm()
+  const dataEntrada = useForm()
+  const [img, setImg] = React.useState('');
+  const {request} = useFetch()
 
-  function handleImgChange(event){
+  function handleSubmit(event){
     event.preventDefault()
-    const formData = new FormData();
-    formData.append('image', img.raw);
-    formData.append('tittle', titulo.value);
-    formData.append('author', autor.value);
-    formData.append('genre', genero.value);
 
-    const {url, options} = BOOKS_POST(formData)
+    // const formData = new FormData();
+
+    // formData.append('image', img);
+    // formData.append('tittle', titulo.value);
+    // formData.append('author', autor.value);
+    // formData.append('genre', genero.value);
+    // formData.append('systemEntryDate', dataEntrada.value);
+    // formData.append('synopsis', sinopse.value);
+    
+    
+    const {url, options} = BOOKS_POST({
+      id:2000,
+      tittle:titulo.value,
+      author:autor.value,
+      genre: genero.value,
+      systemEntryDate: dataEntrada.value,
+      synopsis: sinopse.value
+     })
     request( url, options)
+    
+     async function verlivros(){
+      const response = await fetch('http://localhost:5000/books')
+      const json = await response.json()
+      console.log(json, 'todos livros')
+    }
+    verlivros()
   }
 
-  function handleSubmit({target}) {
-    setImg({
-      raw: target.files[0],
-    })
+  async function handleImgChange({target}) {
+    const raw =  target.files[0]
+    const  baseImg = await converterEmBase64(raw)
+    setImg(baseImg)
   }
+
+  const converterEmBase64 = (raw) => {
+    return new Promise( (resolve, reject) => {
+
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(raw)
+      fileReader.onload = () => {
+        resolve(fileReader.result)
+      };
+
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
 
   return (
     <section>
-      <form onSubmit={handleSubmit}>
-        <input type='file' name='image' id='image' onChange={handleImgChange} />
-        <InputGeral type='text' placeholder='Título' {...titulo} />
-        <InputGeral type='text' placeholder='Autor' {...autor} />
-        <InputGeral type='text' placeholder='Gênero'{...genero} />
-        <InputGeral  type='date' />
-        <Button cor={'#fff'} >Cancelar</Button>
-        <Button border={'none'}>Salvar</Button>
-      </form>
+      <NovoLivro onSubmit={handleSubmit}>
+        <img alt={titulo.value} src={img}>
+        </img>
+        <CadastroImagem
+          type='file'
+          name='image'
+          id='image'
+          onChange={handleImgChange} 
+        />
+        <InputContainer>
+          <InputGeral type='text' placeholder='Título' {...titulo}  />
+          <InputGeral type='text' placeholder='Autor' {...autor} />
+          <TextArea className='sinopse' {...sinopse} />
+          <InputGeral type='text' placeholder='Gênero' {...genero} />
+          <InputGeral  type='date' className='dataInput' {...dataEntrada} />
+        </InputContainer>
+        <div className='divbotoes'>
+            <Button cor={'#fff'} className='botoes' >Cancelar</Button>
+            <Button type='submit' border={'none'} className='botoes'>Salvar</Button>
+        </div>
+      
+      </NovoLivro>
     </section>
   )
 }

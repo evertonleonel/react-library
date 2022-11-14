@@ -7,7 +7,7 @@ import IconePendente from '../../Assets/pendente.svg'
 
 const HomeNav = () => {
   const navigate = useNavigate()
-
+  
   function handleItemClick(event){
     switch(event.currentTarget.textContent){
       case  'Cadastrar novo livro': navigate('/cadastro');
@@ -16,6 +16,7 @@ const HomeNav = () => {
       break;
       case  'Histórico de empréstimos': navigate('/emprestimo');
       break;
+      default: return;
     }
   }
 
@@ -23,7 +24,7 @@ const HomeNav = () => {
     <Nav>
       <Div onClick={handleItemClick}>
         <Icone>
-          <img src={IconeAdicionar} />
+          <img src={IconeAdicionar} alt='Icone adicionar' />
         </Icone>
         <Span>
           <NavLink to='/cadastro'>Cadastrar novo livro</NavLink>
@@ -31,7 +32,7 @@ const HomeNav = () => {
       </Div>
       <Div onClick={handleItemClick}>
         <Icone>
-          <img src={IconeLivro} />
+          <img src={IconeLivro} alt='Icone Livro' />
         </Icone>
         <Span>
           <NavLink to='/biblioteca'>Biblioteca</NavLink>
@@ -39,7 +40,7 @@ const HomeNav = () => {
       </Div>
       <Div onClick={handleItemClick}>
         <Icone>
-          <img src={IconePendente} />
+          <img src={IconePendente} alt='Icone Pendente' />
         </Icone>
         <Span>
           <NavLink to='/emprestimo'>Histórico de empréstimos</NavLink>
