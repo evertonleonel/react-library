@@ -8,7 +8,7 @@ export const ImgCapa = styled.div `
   cursor: pointer;
   width: 172px;
   height: 206px;
-  color:var(--cor-dourada) ;
+  color: #FFC501 ;
   font-size: 20px;
   font-weight: 500;
   

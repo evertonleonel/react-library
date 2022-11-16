@@ -1,11 +1,11 @@
 import React from 'react'
 import {LoginInput, ErrorInput} from './FormStyles'
 
-const Input = ({ type, name, placeholder, value, onChange, error, onBlur }) => {
+const Input = ({ type, name, placeholder, value, onChange, error, onBlur, ...props }) => {
   return(
     <div>
       <label htmlFor={name}></label>
-      <LoginInput 
+      <LoginInput {...props}
         id={name}
         name={name}
         type={type}

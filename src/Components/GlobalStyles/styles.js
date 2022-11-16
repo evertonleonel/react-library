@@ -21,15 +21,14 @@ export const GlobalStyles = createGlobalStyle`
 export const ContainerMain = styled.main`
   width: 100%;
   max-width: 1318px;
-  margin: 24px;
+  margin: 24px auto;
   border-radius: 5px;
   background-color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-
-
+    
   @media (max-width: 920px) {
     margin-right: 20px;
     margin-left: 20px;

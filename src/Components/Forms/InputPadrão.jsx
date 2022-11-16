@@ -1,11 +1,10 @@
 import React from 'react'
 import {InputGeral, ErrorInput} from './FormStyles'
 
-const InputPadrão = ({ type, name, placeholder, value, onChange, error, onBlur }) => {
+const InputPadrão = ({ type, name, placeholder, value, onChange, error, onBlur, ...props}) => {
   return(
-    <div>
-      <label htmlFor={name}></label>
-      <InputGeral 
+    <>
+      <InputGeral {...props}
         id={name}
         name={name}
         type={type}
@@ -15,7 +14,7 @@ const InputPadrão = ({ type, name, placeholder, value, onChange, error, onBlur 
         onBlur={onBlur}
       />
       {error && <ErrorInput>{error}</ErrorInput>}
-    </div>
+    </>
     )
 }
 

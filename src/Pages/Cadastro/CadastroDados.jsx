@@ -7,6 +7,7 @@ import useFetch from '../../Hooks/useFetch'
 import { BOOKS_POST} from '../../Services/api'
 import {InputContainer, NovoLivro} from './CadastroStyles'
 import CadastroImagem from './CadastroImagem'
+import { v4 as uuidv4} from "uuid"
 
 const CadastroDados = () => {
   const titulo = useForm()
@@ -20,18 +21,8 @@ const CadastroDados = () => {
   function handleSubmit(event){
     event.preventDefault()
 
-    // const formData = new FormData();
-
-    // formData.append('image', img);
-    // formData.append('tittle', titulo.value);
-    // formData.append('author', autor.value);
-    // formData.append('genre', genero.value);
-    // formData.append('systemEntryDate', dataEntrada.value);
-    // formData.append('synopsis', sinopse.value);
-    
-    
     const {url, options} = BOOKS_POST({
-      id:2000,
+      id: uuidv4(),
       tittle:titulo.value,
       author:autor.value,
       genre: genero.value,

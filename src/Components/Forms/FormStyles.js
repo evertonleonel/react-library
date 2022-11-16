@@ -2,14 +2,13 @@ import styled from "styled-components";
 
 export const LoginButton = styled.button`
   width: 100%;
-  max-width: 353px;
-  min-height: 45px;
-  color: #000000;
+  max-width: ${ props => props.width || '353px'} ;
+  min-height: ${ props => props.height || '45px'};
+  color: ${ props => props.color || '#000000'};
   background-color:  ${ props => props.cor || '#FFC501'};
-
   border:  ${ props => props.border || '1px solid #133052'};
   border-radius: 4px;
-  font-weight: bold;
+  font-weight:  ${ props => props.weight || 'bold'};
   text-transform: uppercase;
   font-size: 16px;
 
@@ -43,7 +42,7 @@ export const LoginButton = styled.button`
 
 export const LoginInput = styled.input`
   width: 353px;
-  height: 51px;
+  height: ${ props => props.height || '52px'};
   font-size: 14px;
   padding: 16px;
   padding-right: 35px;
@@ -86,4 +85,3 @@ export const InputGeral = styled.input`
     font-size: calc(14px, 16px, 19px);
   }
 `
-
