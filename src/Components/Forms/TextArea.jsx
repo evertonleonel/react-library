@@ -1,17 +1,16 @@
 import React from 'react'
-import {ErrorInput} from './FormStyles'
+import { InputTextArea } from './FormStyles'
 
-const TextArea = ({ type, name, placeholder, value, onChange, error, onBlur }) => {
+const TextArea = ({ type, placeholder, value, onChange, onBlur }) => {
   return(
     <>
-      <textarea 
+      <InputTextArea
         type={type}
         placeholder={placeholder}
         onChange={onChange}
         value={value}
         onBlur={onBlur}
       />
-      {error && <ErrorInput>{error}</ErrorInput>}
     </>
     )
 }

@@ -24,15 +24,12 @@ export const ImgCapa = styled.div `
 
 export const NovoLivro = styled.form` 
   display: flex;
-  gap:48px;
 	/* align-items: center; */
 	justify-content: center;
 	flex-wrap: wrap;
-
+ 
   .sinopse {
   
-  height: 129px; 
-  resize: none; 
      /* @media (max-width: 999px) {
       margin: 1rem auto;
       width: 55%;
@@ -51,44 +48,44 @@ export const NovoLivro = styled.form`
 `
 
 export const InputContainer = styled.div`
+  background-color: tomato;
   display: grid;
   grid-gap: 24px;
-  grid-template-areas: 
+  grid-template-columns: repeat(2, 350px);
+  grid-row: 53px;
+  /* grid-template-areas: 
   '  titulo autor'
   '  sinopse genero'
-  '  sinopse dataentrada'
-  '  sinopse dataentrada';
+  '  sinopse dataentrada'; */
+ 
   
-  :nth-child(0) {
+  :nth-child(1) {
   grid-area: titulo;
 }
 
-  :nth-child(1) {
+  :nth-child(2) {
     grid-area: autor;
   }
 
-  :nth-child(2) {
+  :nth-child(3) {
     grid-area: sinopse;
   }
-  :nth-child(3) {
+  :nth-child(4) {
     grid-area: genero;
   }
-  :nth-child(4) {
+  :nth-child(5) {
     grid-area: dataentrada;
-    position: relative;
   }
 
   .dataInput {
   position: relative;
 }
-
-.divbotoes {
+`
+export const DivBotoes = styled.div`
+  width: 100%;
   display: flex;
-  gap: 24px ;
-  display: block;
-  top: 75%;
-  right: 0;
-  position: absolute;
-}
+  align-items: center;
+  justify-content: flex-end;
+  gap: 24px;
 
 `

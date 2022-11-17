@@ -1,13 +1,13 @@
 import React from 'react'
-import Button from '../../Components/Forms/Button'
 import TextArea from '../../Components/Forms/TextArea'
 import { InputGeral } from '../../Components/Forms/FormStyles'
 import useForm from '../../Hooks/useForm'
 import useFetch from '../../Hooks/useFetch'
 import { BOOKS_POST} from '../../Services/api'
-import {InputContainer, NovoLivro} from './CadastroStyles'
+import {InputContainer, NovoLivro, DivBotoes} from './CadastroStyles'
 import CadastroImagem from './CadastroImagem'
 import { v4 as uuidv4} from "uuid"
+import CadastroBotoes from './CadastroBotoes'
 
 const CadastroDados = () => {
   const titulo = useForm()
@@ -62,28 +62,27 @@ const CadastroDados = () => {
 
   return (
     <section>
-      <NovoLivro onSubmit={handleSubmit}>
-        <img alt={titulo.value} src={img}>
-        </img>
-        <CadastroImagem
-          type='file'
-          name='image'
-          id='image'
-          onChange={handleImgChange} 
-        />
-        <InputContainer>
-          <InputGeral type='text' placeholder='Título' {...titulo}  />
-          <InputGeral type='text' placeholder='Autor' {...autor} />
-          <TextArea className='sinopse' {...sinopse} />
-          <InputGeral type='text' placeholder='Gênero' {...genero} />
-          <InputGeral  type='date' className='dataInput' {...dataEntrada} />
-        </InputContainer>
-        <div className='divbotoes'>
-            <Button cor={'#fff'} className='botoes' >Cancelar</Button>
-            <Button type='submit' border={'none'} className='botoes'>Salvar</Button>
-        </div>
-      
-      </NovoLivro>
+        <NovoLivro onSubmit={handleSubmit}>
+          <img alt={titulo.value} src={img}>
+          </img>
+          <CadastroImagem
+            type='file'
+            name='image'
+            id='image'
+            onChange={handleImgChange} 
+          />
+          <div>
+            <InputContainer>
+              <InputGeral type='text' placeholder='Título' {...titulo}  />
+              <InputGeral type='text' placeholder='Autor' {...autor} />
+              <TextArea className='sinopse' placeholder='Sinopse' {...sinopse} />
+              <InputGeral type='text' placeholder='Gênero' {...genero} />
+              <InputGeral  type='date' className='dataInput' {...dataEntrada} />
+            </InputContainer>
+           <CadastroBotoes />
+          </div>
+        
+        </NovoLivro>
     </section>
   )
 }
