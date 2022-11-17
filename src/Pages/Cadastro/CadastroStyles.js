@@ -24,17 +24,9 @@ export const ImgCapa = styled.div `
 
 export const NovoLivro = styled.form` 
   display: flex;
-	/* align-items: center; */
 	justify-content: center;
-	flex-wrap: wrap;
- 
-  .sinopse {
-  
-     /* @media (max-width: 999px) {
-      margin: 1rem auto;
-      width: 55%;
-    } */
-}
+  gap: 48px;
+  margin: 167px auto;
 
 .botoes {
   width: 14.3rem;
@@ -45,41 +37,54 @@ export const NovoLivro = styled.form`
   text-transform: uppercase;
   cursor: pointer;
 }
+
+  @media (max-width: 1030px) {
+    justify-content: center;
+    margin: 167px 30px;
+  }
+
+  @media (max-width: 720px) {
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    div {
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 `
 
 export const InputContainer = styled.div`
-  background-color: tomato;
-  display: grid;
-  grid-gap: 24px;
-  grid-template-columns: repeat(2, 350px);
-  grid-row: 53px;
-  /* grid-template-areas: 
-  '  titulo autor'
-  '  sinopse genero'
-  '  sinopse dataentrada'; */
- 
+  display: flex;
   
-  :nth-child(1) {
-  grid-area: titulo;
+  gap: 24px;
+
+ .titulo{
+  margin-bottom: 24px;
 }
 
-  :nth-child(2) {
-    grid-area: autor;
+  .autor{
+    margin-bottom: 24px;
   }
 
-  :nth-child(3) {
+  .sinopse {
     grid-area: sinopse;
   }
-  :nth-child(4) {
-    grid-area: genero;
-  }
-  :nth-child(5) {
-    grid-area: dataentrada;
+
+  .genero {
+    margin-bottom: 24px;
   }
 
-  .dataInput {
-  position: relative;
-}
+ .dataEntrada {
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+   @media (max-width: 1030px) {
+      flex-wrap: wrap;
+    }
+
 `
 export const DivBotoes = styled.div`
   width: 100%;
@@ -88,4 +93,16 @@ export const DivBotoes = styled.div`
   justify-content: flex-end;
   gap: 24px;
 
+  @media (max-width: 1030px) {
+      justify-content: flex-start;
+    }
+`
+
+export const ImagemEscolhida = styled.img`
+  width: 100%;
+  width: 172px;
+  height: 206px;
+  object-fit: cover;
+  border-radius: 2px;
+  cursor: pointer;
 `

@@ -6,8 +6,10 @@ import useFetch from '../../Hooks/useFetch'
 import { BOOKS_POST} from '../../Services/api'
 import {InputContainer, NovoLivro, DivBotoes} from './CadastroStyles'
 import CadastroImagem from './CadastroImagem'
-import { v4 as uuidv4} from "uuid"
 import CadastroBotoes from './CadastroBotoes'
+import Adicionar from '../../Assets/adicionar.svg'
+import { v4 as uuidv4} from "uuid"
+import CadastroFoto from './CadastroFoto'
 
 const CadastroDados = () => {
   const titulo = useForm()
@@ -63,9 +65,7 @@ const CadastroDados = () => {
   return (
     <section>
         <NovoLivro onSubmit={handleSubmit}>
-          <img alt={titulo.value} src={img}>
-          </img>
-          <CadastroImagem
+          <CadastroImagem alt={titulo.value} src={img}
             type='file'
             name='image'
             id='image'
@@ -73,15 +73,18 @@ const CadastroDados = () => {
           />
           <div>
             <InputContainer>
-              <InputGeral type='text' placeholder='Título' {...titulo}  />
-              <InputGeral type='text' placeholder='Autor' {...autor} />
-              <TextArea className='sinopse' placeholder='Sinopse' {...sinopse} />
-              <InputGeral type='text' placeholder='Gênero' {...genero} />
-              <InputGeral  type='date' className='dataInput' {...dataEntrada} />
+              <div style={{maxWidth: '350px'}}>
+                <InputGeral className='titulo' type='text' placeholder='Título' {...titulo}  />
+                <TextArea className='sinopse' placeholder='Sinopse' {...sinopse} />
+              </div>
+              <div style={{maxWidth: '350px'}}>
+                <InputGeral className='autor' type='text' placeholder='Autor' {...autor} />
+                <InputGeral className='genero' type='text' placeholder='Gênero' {...genero} />
+                <InputGeral className='dataEntrada' type='date' {...dataEntrada} />
+              </div>
             </InputContainer>
            <CadastroBotoes />
           </div>
-        
         </NovoLivro>
     </section>
   )

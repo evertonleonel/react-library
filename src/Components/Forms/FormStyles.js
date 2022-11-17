@@ -88,8 +88,7 @@ export const InputGeral = styled.input`
 
 export const InputTextArea = styled.textarea`
   width: 100%;
-  height: 100%;
-  max-height: 129px;
+  height: 129px;
   resize: none;
   padding: 16px;
   background-color:#FFFFFF;
@@ -99,6 +98,7 @@ export const InputTextArea = styled.textarea`
   border-radius: 5px;
   border: 1px solid #133052;
   outline: none;
+  box-sizing: border-box;
   
   &::placeholder {
     color: #133052;
