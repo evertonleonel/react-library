@@ -1,26 +1,26 @@
-import React from 'react'
-import { LivroDiv, LivroContainer, Image } from './BibliotecaStyles'
+import React, { useEffect } from 'react'
+import { LivroDiv, LivroContainer} from './BibliotecaStyles'
+import {LivroContext} from '../../Hooks/LivroContext'
 
 const BibliotecaGalery = () => {
-  const [livros, setLivros] = React.useState(null);
+  const global = React.useContext(LivroContext);
+  const livros = global.livros
 
-  React.useEffect(() =>{
-    
-    async function fetchLivro (){
-      const response = await fetch('http://localhost:5000/books');
-      const json = await response.json();
-      setLivros(json);
-    }
-    fetchLivro ();
-
+  const loadLivros = async () => {
+    await global.fetchLivro()
+    return true
+  }
+ 
+  useEffect( () => {
+    loadLivros()
   },[] )
 
   return (
-    <LivroContainer id='10'>
+    <LivroContainer >
         {livros && livros.map( (livro, index) => {
           return (
             <LivroDiv key={index} id={livro.id} >
-              <Image src={'livro.image'} />
+              <img src={livro.image} />
               <h2>{livro.tittle}</h2>
             </LivroDiv> 
           )

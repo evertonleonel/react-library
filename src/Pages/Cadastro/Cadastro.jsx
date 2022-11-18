@@ -9,7 +9,7 @@ const Cadastro = () => {
     <>
       <Header />
       <ContainerMain>
-        {/* <LinkVoltar pagina='Cadastrar novo livro' /> */}
+        <LinkVoltar pagina='Cadastrar novo livro' />
         <CadastroDados />
       </ContainerMain>
     </>

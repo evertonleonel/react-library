@@ -41,3 +41,18 @@ export const getUser = () => {
   const data = localStorage.getItem('users');
   return data ? JSON.parse(data) : {};
 };
+
+export const converterEmBase64 = (raw) => {
+  return new Promise( (resolve, reject) => {
+
+    const fileReader = new FileReader();
+    fileReader.readAsDataURL(raw)
+    fileReader.onload = () => {
+      resolve(fileReader.result)
+    };
+
+    fileReader.onerror = (error) => {
+      reject(error);
+    };
+  });
+};

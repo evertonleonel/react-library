@@ -38,6 +38,7 @@ export const DivGaleria = styled.div`
   margin-top: 98px;
   margin-left: auto;
   margin-right: auto;
+  width: 100%;
 `
 
 export const LivroDiv = styled.div`
@@ -63,18 +64,18 @@ export const LivroDiv = styled.div`
   }
 
   img {
-    max-width: 108px;
-    max-height: 155px;
+    width: 108px;
+    height: 155px;
   }
 
   h2 {
     text-align: center;
-    font-size:16px;
-    letter-spacing: 0px;
+    font-size:1.6rem;
     color: #3E4756;
     width: 120px;
     overflow: hidden;
     text-overflow:ellipsis;
+    white-space: nowrap;
   }
 `
 
@@ -82,8 +83,8 @@ export const LivroContainer = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(196px, 1fr));
   gap: 4rem;
-  width: 100%;
   margin: 96px auto;
+  width: 90%;
 `
 
 export const Image = styled.img`

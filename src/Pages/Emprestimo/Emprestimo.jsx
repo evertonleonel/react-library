@@ -7,7 +7,7 @@ const Emprestimo = () => {
     <>
       <Header />
       <ContainerMain>
-        Emprestar
+        Emprestar  
       </ContainerMain>
     </>
   )

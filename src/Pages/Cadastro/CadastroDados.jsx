@@ -4,12 +4,12 @@ import { InputGeral } from '../../Components/Forms/FormStyles'
 import useForm from '../../Hooks/useForm'
 import useFetch from '../../Hooks/useFetch'
 import { BOOKS_POST} from '../../Services/api'
-import {InputContainer, NovoLivro, DivBotoes} from './CadastroStyles'
+import {InputContainer, NovoLivro} from './CadastroStyles'
 import CadastroImagem from './CadastroImagem'
 import CadastroBotoes from './CadastroBotoes'
-import Adicionar from '../../Assets/adicionar.svg'
+import {converterEmBase64} from '../../Services/api'
 import { v4 as uuidv4} from "uuid"
-import CadastroFoto from './CadastroFoto'
+
 
 const CadastroDados = () => {
   const titulo = useForm()
@@ -46,21 +46,6 @@ const CadastroDados = () => {
     const  baseImg = await converterEmBase64(raw)
     setImg(baseImg)
   }
-
-  const converterEmBase64 = (raw) => {
-    return new Promise( (resolve, reject) => {
-
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(raw)
-      fileReader.onload = () => {
-        resolve(fileReader.result)
-      };
-
-      fileReader.onerror = (error) => {
-        reject(error);
-      };
-    });
-  };
 
   return (
     <section>
