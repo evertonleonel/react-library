@@ -3,6 +3,7 @@ import React from 'react';
 export const LivroContext = React.createContext();
 
 export const LivrosArmazenados = ({children}) => {
+  const [loadLivros, setLoadLivros] = React.useState(null)
   const [livros, setLivros] = React.useState(null);
 
    const fetchLivro  = async  () => {
@@ -12,5 +13,13 @@ export const LivrosArmazenados = ({children}) => {
       return true
     }
   
-  return <LivroContext.Provider value={{livros,setLivros, fetchLivro}}>{children}</LivroContext.Provider>
+  return <LivroContext.Provider 
+  value={
+    {
+    fetchLivro,
+    livros,
+    setLivros,
+    loadLivros,
+    setLoadLivros
+  }}>{children}</LivroContext.Provider>
 }

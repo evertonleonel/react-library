@@ -9,7 +9,7 @@ const BibliotecaFiltro = ( {onChange, id}) => {
        <Options   disabled  item='Filtrar'/>
        <Options value='genre'  item='Gênero'/>
        <Options value='author' item='Autor'/>
-       <Options value='withdrawalDate' item='Data de Entrada'/>
+       <Options value='systemEntryDate' item='Data de Entrada'/>
        <Options value='synopsis' item='Sinopse'/>
       </SelectionFiltro>
     </>

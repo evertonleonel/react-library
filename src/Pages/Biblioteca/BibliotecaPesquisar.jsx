@@ -10,21 +10,9 @@ const BibliotecaPesquisar = () => {
   const [inputPesquisar, setInputPesquisar] = React.useState('');
   const [selectFiltro, setSelectFiltro] = React.useState('');
   const global = React.useContext(LivroContext);
-  const livros = global.livros
-  const setLivros = global.setLivros;
-  const [loading, setLoading] = React.useState(false)
+  const setLoadLivros = global.setLoadLivros;
+  const livros = global.livros;
 
-  const loadLivros = async () => {
-    await global.fetchLivro()
-    setLoading(true)
-  }
-
-  // useEffect( ()=> {
-  //   // setLoading(false)
-  //   loadLivros()
-  //   // filtrarLivros()
-  // }, [])
-  
   function inputChange(event){
     const {value} = event.target;
     setInputPesquisar(value)
@@ -40,9 +28,7 @@ const BibliotecaPesquisar = () => {
       livro[tipo].toLowerCase().indexOf(pesquisa.toLowerCase()) > -1
     ));
    
-    console.log(livrosFiltrados)
-  
-    setLivros(livrosFiltrados);
+    setLoadLivros(livrosFiltrados);
   };
 
   function buscarFiltros(){
