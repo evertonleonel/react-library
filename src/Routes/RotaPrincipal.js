@@ -7,21 +7,24 @@ import Cadastro from '../Pages/Cadastro/Cadastro'
 import Biblioteca from '../Pages/Biblioteca/Biblioteca'
 import Emprestimo from '../Pages/Emprestimo/Emprestimo'
 import PaginaNaoEncontrada from "../Pages/PaginaNaoEncontrada/PaginaNaoEncontrada";
+import { LivrosArmazenados } from "../Hooks/LivroContext";
 
 function App() {
   return (
     <div>
       <GlobalStyles />
-      <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Login />} />
-            <Route path="home" element={<Home />} />
-            <Route path='cadastro'  element={ <Cadastro />} />
-            <Route path='biblioteca' element={ <Biblioteca />} />
-            <Route path='emprestimo' element={ <Emprestimo />} />
-            <Route path="*" element={<PaginaNaoEncontrada />} />
-          </Routes>
-      </BrowserRouter>
+      <LivrosArmazenados>
+        <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="home" element={<Home />} />
+              <Route path='cadastro'  element={ <Cadastro />} />
+              <Route path='biblioteca' element={ <Biblioteca />} />
+              <Route path='emprestimo' element={ <Emprestimo />} />
+              <Route path="*" element={<PaginaNaoEncontrada />} />
+            </Routes>
+        </BrowserRouter>
+      </LivrosArmazenados>
     </div>
   );
 }

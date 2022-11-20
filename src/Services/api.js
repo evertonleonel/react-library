@@ -24,6 +24,16 @@ export function GET_BOOKS(body){
   }
 }
 
+export function LIVRO_GET(id){
+  return {
+    url:   `${API_URL}/books/${id}`,
+    options: {
+      method: 'GET',
+      cache: 'no-store',
+    }
+  }
+}
+
 export function BOOKS_POST (body){
   return {
     url: API_URL + '/books/',

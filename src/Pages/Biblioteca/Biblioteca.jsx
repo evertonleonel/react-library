@@ -3,18 +3,18 @@ import { ContainerMain } from '../../Components/GlobalStyles/styles'
 import Header from '../../Components/Header/Header'
 import LinkVoltar from '../../Components/LinkVoltar/LinkVoltar'
 import BibliotecaGaleria from './BibliotecaGaleria'
-import {LivrosArmazenados} from '../../Hooks/LivroContext'
+
 
 const Biblioteca = () => {
  
   return (
-    <LivrosArmazenados>
+    <>
       <Header />
       <ContainerMain>
         <LinkVoltar pagina='Biblioteca' />
           <BibliotecaGaleria />
       </ContainerMain>
-    </LivrosArmazenados>
+    </>
   )
 }
 

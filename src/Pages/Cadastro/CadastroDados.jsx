@@ -29,14 +29,14 @@ const CadastroDados = () => {
       author:autor.value,
       genre: genero.value,
       systemEntryDate: dataEntrada.value,
-      synopsis: sinopse.value
+      synopsis: sinopse.value,
+      image: img
      })
     request( url, options)
     
      async function verlivros(){
       const response = await fetch('http://localhost:5000/books')
       const json = await response.json()
-      console.log(json, 'todos livros')
     }
     verlivros()
   }
