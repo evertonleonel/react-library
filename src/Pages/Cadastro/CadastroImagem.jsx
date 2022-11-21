@@ -1,5 +1,4 @@
 import React from 'react'
-import CadastroFoto from './CadastroFoto'
 import {ImgCapa} from './CadastroStyles'
 import Adicionar from '../../Assets/adicionar.svg'
 

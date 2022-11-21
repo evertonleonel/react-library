@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../../../Components/Forms/Button';
+import Button from '../../../Components/Forms/Button'
 import { 
   ContainerDireito,
   ContainerEsquerdo,
@@ -12,6 +12,8 @@ import IconeLivro from '../../../Assets/icone_livro.png'
 import ModalBotoes from './ModalBotoes';
 import ModalInfo from './ModalInfo';
 import FecharModal from '../../../Assets/x-fechar.png'
+import ModalExtra from './ModalExtra';
+import   ModalExtraInativar from './ModalExtraInativar';
 
 
 const ModalLivros = ({livroSelecionado}) => {
@@ -35,8 +37,8 @@ const ModalLivros = ({livroSelecionado}) => {
         <ContainerPrincipal>
           <ContainerEsquerdo>
             {livros && <ImagemLivro src={livros.image} /> }
-            <Button>
-              <img   src={IconeLivro} alt="Icone do botão Emprestar / Devolver" />
+            <Button style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap:'12px'}}>
+              <img src={IconeLivro} alt="Icone do botão Emprestar / Devolver" />
               Emprestar
             </Button>
           </ContainerEsquerdo>
@@ -53,7 +55,9 @@ const ModalLivros = ({livroSelecionado}) => {
               <img  src={FecharModal}  onClick={(event) => {console.log(event.target)}}/>
             </div>
           </ContainerDireito>
-        </ContainerPrincipal>
+        </ContainerPrincipal>  
+        {/* <ModalExtra /> */}
+        <ModalExtraInativar />
       </ModalLivroContent>
     </Modal>
   )

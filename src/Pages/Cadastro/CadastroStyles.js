@@ -5,7 +5,7 @@ export const ImgCapa = styled.div `
   align-items: center;
   justify-content: center;
   gap: 8px;
-  cursor: pointer;
+
   width: 172px;
   height: 206px;
   color: #FFC501 ;
@@ -57,7 +57,6 @@ export const NovoLivro = styled.form`
 
 export const InputContainer = styled.div`
   display: flex;
-  
   gap: 24px;
 
  .titulo{

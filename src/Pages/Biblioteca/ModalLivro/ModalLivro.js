@@ -10,6 +10,7 @@ export const Modal = styled.div`
   display: flex;
   z-index: 100;
   padding: 2rem calc(4rem + 15px) 2rem 4rem;
+  overflow-y: auto;
 `
 
 export const ImagemLivro = styled.img`
@@ -19,16 +20,16 @@ export const ImagemLivro = styled.img`
 `
 
 export const ModalLivroContent = styled.div`
+  display: flex;
 	flex-direction: column;
 	background-color: #fff;
 	border: 1px solid #707070;
 	overflow-wrap: normal;
-	width: 816px;
-	/* max-height: 825px; */
+  max-width: 81.6rem;
 	position: absolute;
 	left: 50%;
 	transform: translate(-50%, 0);
-
+	max-height: 825px;
 `
 
 export const ContainerEsquerdo = styled.div`
@@ -80,7 +81,6 @@ export const ContainerDireito = styled.div`
     img {
       cursor: pointer;
     }
-
   }
 `
 
@@ -97,3 +97,70 @@ export const BotoesModal = styled.div`
 	gap: 24px;
 	justify-content: center;
 `
+
+export const ModalExtraDados = styled.div`
+	height: 100%;
+	margin: 0 40px;
+  margin-bottom: 40px;
+
+  h2 {
+    color: #3E4756;
+    font: normal normal medium 20px/26px Roboto;
+  }
+
+  table {
+    width: 736px;
+    margin-top: 16px;
+    padding: 16px;
+    text-align: left;
+    margin-bottom: 16px;
+    background-color: #f4f4f4;
+    color: #3E4756;
+
+    thead {
+        th{    
+        font-size: 16px;
+        font-weight: 500;
+      }
+    }
+
+    tbody {
+        th {
+        font-size: 16px;
+        font-weight: 300;
+      }
+    }
+
+  }
+`
+export const ModalInativar = styled.div`
+	height: 100%;
+	margin: 0 40px;
+  margin-bottom: 40px;
+
+  h2 {
+    color: #3E4756;
+    font: normal normal medium 20px/26px Roboto;
+    margin-bottom: 16px;
+  }
+  `
+
+  export const MotivoInativar = styled.div`
+    padding: 16px;
+    background-color: #F4F4F4;
+   
+    h3 {
+      text-align: left;
+      font: normal normal medium 16px/21px Roboto;
+      letter-spacing: 0px;
+      color: #3E4756;
+      margin-bottom: 8px;
+    }
+
+    p{
+      text-align: left;
+      font: normal normal 300 16px/21px Roboto;
+      letter-spacing: 0px;
+      color: #3E4756;
+    }
+  `

@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 export const LinkContainer = styled.nav`
-  font-size: clamp(2rem, 1rem + 1.5vw, 2.6rem);
+  font-size: 2rem;
   position: absolute;
   top: 24px;
   left: calc(24px + 1.82%);
