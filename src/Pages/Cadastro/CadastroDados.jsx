@@ -10,7 +10,6 @@ import CadastroBotoes from './CadastroBotoes'
 import {converterEmBase64} from '../../Services/api'
 import { v4 as uuidv4} from "uuid"
 
-
 const CadastroDados = () => {
   const titulo = useForm()
   const autor = useForm()
@@ -21,25 +20,28 @@ const CadastroDados = () => {
   const {request} = useFetch()
 
   function handleSubmit(event){
-    event.preventDefault()
-
-    const {url, options} = BOOKS_POST({
-      id: uuidv4(),
-      tittle:titulo.value,
-      author:autor.value,
-      genre: genero.value,
-      systemEntryDate: dataEntrada.value,
-      synopsis: sinopse.value,
-      image: img
-     })
-    request( url, options)
+      event.preventDefault()
+      if(!img) return alert('Escolha uma imagem')
     
-     async function verlivros(){
-      const response = await fetch('http://localhost:5000/books')
-      const json = await response.json()
-    }
-    verlivros()
-  }
+      const {url, options} = BOOKS_POST({
+        id: uuidv4(),
+        tittle:titulo.value,
+        author:autor.value,
+        genre: genero.value,
+        systemEntryDate: dataEntrada.value,
+        synopsis: sinopse.value,
+        image: img
+      })
+      request( url, options)
+      
+      async function verlivros(){
+        const response = await fetch('http://localhost:5000/books')
+        const json = await response.json()
+      }
+
+      verlivros()
+      alert('Livro cadastrado com sucesso')
+  };
 
   async function handleImgChange({target}) {
     const raw =  target.files[0]
@@ -59,13 +61,13 @@ const CadastroDados = () => {
           <div>
             <InputContainer>
               <div style={{maxWidth: '350px'}}>
-                <InputGeral className='titulo' type='text' placeholder='Título' {...titulo}  />
-                <TextArea className='sinopse' placeholder='Sinopse' {...sinopse} />
+                <InputGeral required className='titulo' type='text' placeholder='Título' {...titulo} />
+                <TextArea required className='sinopse' placeholder='Sinopse' {...sinopse} />
               </div>
               <div style={{maxWidth: '350px'}}>
-                <InputGeral className='autor' type='text' placeholder='Autor' {...autor} />
-                <InputGeral className='genero' type='text' placeholder='Gênero' {...genero} />
-                <InputGeral className='dataEntrada' type='date' {...dataEntrada} />
+                <InputGeral required className='autor' type='text' placeholder='Autor' {...autor} />
+                <InputGeral required className='genero' type='text' placeholder='Gênero' {...genero} />
+                <InputGeral required className='dataEntrada' type='date' {...dataEntrada} />
               </div>
             </InputContainer>
            <CadastroBotoes />

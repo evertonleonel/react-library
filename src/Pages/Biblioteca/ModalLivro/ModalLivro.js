@@ -15,7 +15,7 @@ export const Modal = styled.div`
 export const ImagemLivro = styled.img`
   width: 27.2rem;
   height: 39rem;
-  object-fit: cover;
+  object-fit: contain;
 `
 
 export const ModalLivroContent = styled.div`

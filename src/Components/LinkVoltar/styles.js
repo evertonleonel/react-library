@@ -10,6 +10,11 @@ export const LinkContainer = styled.nav`
     text-decoration: none;
     color: #00000080;
     margin-right: 8px;
+    transition: all 250ms ease-in-out;
+  }
+
+  a:hover{
+    color: #FFC501;
   }
 
   :nth-child(1){

@@ -1,10 +1,10 @@
 import React from 'react'
 import { InputTextArea } from './FormStyles'
 
-const TextArea = ({ type, placeholder, value, onChange, onBlur }) => {
+const TextArea = ({ type, placeholder, value, onChange, onBlur, ...props }) => {
   return(
     <>
-      <InputTextArea
+      <InputTextArea {...props}
         type={type}
         placeholder={placeholder}
         onChange={onChange}
