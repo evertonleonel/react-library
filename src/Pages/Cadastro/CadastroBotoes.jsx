@@ -7,9 +7,9 @@ const CadastroBotoes = () => {
   const navigate = useNavigate()
   return (
     <DivBotoes >
-    <Button onClick={() => navigate('/home')} cor={'#fff'} className='botoes'  >Cancelar</Button>
-    <Button type='submit' border={'none'} className='botoes'>Salvar</Button>
-    </DivBotoes>
+      <Button onClick={() => navigate('/home')} cor={'#fff'} className='botoes'  >Cancelar</Button>
+      <Button type='submit' border={'none'}   className='botoes'>Salvar</Button>
+      </DivBotoes>
   )
 }
 

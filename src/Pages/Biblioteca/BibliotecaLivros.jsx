@@ -24,7 +24,6 @@ const BibliotecaGalery = ({setModalLivros}) => {
 
   function handleClick(event){
     let livroSelecionado = event.currentTarget
-    console.log(livroSelecionado)
     setModalLivros(livroSelecionado)
   }
 

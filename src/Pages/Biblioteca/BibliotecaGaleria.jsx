@@ -6,12 +6,16 @@ import ModalLivros from './ModalLivro/ModalLivros'
 
 const BibliotecaGaleria = () => {
   const [modalLivros, setModalLivros] = React.useState(null);
- 
+  
+  function fecharModal(){
+    setModalLivros(false)
+  }
+
   return (
     <>
       <DivGaleria>
         <BibliotecaPesquisar />
-        {modalLivros && <ModalLivros livroSelecionado={modalLivros} />} 
+        {modalLivros && <ModalLivros livroSelecionado={modalLivros} onClick={fecharModal} />}
         <BibliotecaLivros setModalLivros={setModalLivros} />
      </DivGaleria>
     </>

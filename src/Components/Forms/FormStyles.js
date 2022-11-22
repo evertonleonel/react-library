@@ -9,9 +9,7 @@ export const LoginButton = styled.button`
   border:  ${ props => props.border || '1px solid #133052'};
   border-radius: 4px;
   font-weight:  ${ props => props.weight || 'bold'};
-  text-transform: uppercase;
   font-size: 16px;
-
   outline: none;
   position: relative;
   cursor:pointer;

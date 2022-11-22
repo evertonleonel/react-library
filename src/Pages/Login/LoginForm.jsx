@@ -88,7 +88,7 @@ const LoginForm = () => {
           {...password}
         />
         <LinkSenhaPerdida>Esqueci minha senha</LinkSenhaPerdida>
-        <Button border={'none'}>Entrar</Button>
+        <Button border={'none'} >ENTRAR</Button>
       </form>
     </section>
   )

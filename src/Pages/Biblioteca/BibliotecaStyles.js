@@ -24,7 +24,7 @@ export const DivBuscar = styled.div`
 export const SelectionFiltro = styled.select `
   width: 26rem;
   height: 53px;
-  font: normal normal normal 16px/21px Roboto;
+  font: normal normal normal 16px;
   background-color: #FFFFFF;
   color: #ADB5BD;
   border: 1px solid #ADB5BD;

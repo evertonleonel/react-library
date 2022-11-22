@@ -19,27 +19,34 @@ const CadastroDados = () => {
   const [img, setImg] = React.useState('');
   const {request} = useFetch()
 
+  function formatarData(dataAtual){
+    let formatarData = dataAtual.value
+    return formatarData.split('-').reverse().join('/');
+  };
+
   function handleSubmit(event){
       event.preventDefault()
       if(!img) return alert('Escolha uma imagem')
-    
-      const {url, options} = BOOKS_POST({
+
+      const novoLivro = 
+      { 
         id: uuidv4(),
-        tittle:titulo.value,
-        author:autor.value,
+        tittle: titulo.value,
+        author: autor.value,
         genre: genero.value,
-        systemEntryDate: dataEntrada.value,
-        synopsis: sinopse.value,
-        image: img
-      })
+        status: {
+          isActive: true,
+          description: ""
+        },
+        image: img,
+        systemEntryDate: formatarData(dataEntrada),
+        synopsis:  sinopse.value,
+        rentHistory: []
+      };
+    
+      const {url, options} = BOOKS_POST(novoLivro)
       request( url, options)
       
-      async function verlivros(){
-        const response = await fetch('http://localhost:5000/books')
-        const json = await response.json()
-      }
-
-      verlivros()
       alert('Livro cadastrado com sucesso')
   };
 
