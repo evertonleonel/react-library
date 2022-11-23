@@ -16,8 +16,6 @@ import ModalExtra from './ModalExtra';
 import   ModalExtraInativar from './ModalExtraInativar';
 import ModalEmprestarLivro from '../../../Components/Modais/ModalEmprestar/ModalEmprestarLivro'
 
-
-
 const ModalLivros = ({livroSelecionado, onClick, }) => {
   const [livros, setLivros] = React.useState(null);
   const [historicoLivro, setHistoricoLivro] = React.useState(null)

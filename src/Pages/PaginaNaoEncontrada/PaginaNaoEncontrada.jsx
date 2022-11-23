@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
 const PaginaNaoEncontrada = () => {
-  return (
-    <div>Erro 404: Página não encontrada</div>
-  )
-}
+    return <div>Erro 404: Página não encontrada</div>;
+};
 
-export default PaginaNaoEncontrada
+export default PaginaNaoEncontrada;

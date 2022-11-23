@@ -1,14 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-const Options = ( {item, value, ...props} ) => {
-  return (
-    <option 
-    {...props}
-    value={value}
-    >
-    {item}
-    </option>
-  )
-}
+const Options = ({ item, value, ...props }) => {
+    return (
+        <option {...props} value={value}>
+            {item}
+        </option>
+    );
+};
 
-export default Options
+export default Options;
