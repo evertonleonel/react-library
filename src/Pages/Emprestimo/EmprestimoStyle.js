@@ -17,11 +17,13 @@ export const ContainerTabela = styled.div`
 
     input {
         border: none;
+        border-radius: 0%;
         border-bottom: 2px solid #000000;
         width: 135px;
         height: 21px;
         outline: none;
-        padding-left: 18%;
+        padding: 0%;
+        padding-bottom: 5px;
     }
 
     table {
@@ -54,6 +56,18 @@ export const ContainerTabela = styled.div`
     td {
         border-bottom: 2px solid #ddd;
         padding-top: 30px;
+
+        img {
+            margin: -20px 0px;
+        }
+    }
+
+    tr {
+        td:nth-child(3) {
+            img {
+                margin: -20px;
+            }
+        }
     }
 
     h2 {
@@ -64,8 +78,8 @@ export const ContainerTabela = styled.div`
 `;
 
 export const TabelaContent = styled.div`
-    overflow-x: auto;
     position: relative;
     margin-top: 10px;
     margin-bottom: 10px;
+    overflow: auto;
 `;

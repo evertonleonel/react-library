@@ -8,19 +8,20 @@ import useForm from '../../../Hooks/useForm';
 import useFetch from '../../../Hooks/useFetch';
 import { RENT_POST } from '../../../Services/api';
 import { InputGeral } from '../../Forms/FormStyles';
+import { validarData } from '../../../Services/api';
 
-const ModalEmprestarLivro = ({ onClick, livroSelecionado }) => {
+const ModalEmprestarLivro = ({ onClick, livroSelecionado, setDevolvido }) => {
     const [fecharModal, setFecharModal] = React.useState(null);
     const [livroParaEmprestar, setLivroParaEmprestar] = React.useState(null);
     const { request } = useFetch();
     const aluno = useForm();
     const classe = useForm();
-    const dataEntrada = useForm();
-    const dataSaida = useForm();
+    const dataRetirada = useForm();
+    const dataEntrega = useForm();
 
     React.useEffect(() => {
         setLivroParaEmprestar(livroSelecionado);
-    }, []);
+    }, [livroSelecionado]);
 
     function formatarData(dataAtual) {
         let formatarData = dataAtual.value;
@@ -33,9 +34,13 @@ const ModalEmprestarLivro = ({ onClick, livroSelecionado }) => {
         const novoRentHistory = {
             studentName: aluno.value,
             class: classe.value,
-            withdrawalDate: formatarData(dataEntrada),
-            deliveryDate: formatarData(dataSaida),
+            withdrawalDate: formatarData(dataRetirada),
+            deliveryDate: formatarData(dataEntrega),
         };
+
+        if (!aluno.validate()) return;
+        if (!classe.validate()) return;
+        if (!validarData(dataRetirada, dataEntrega)) return;
 
         livroParaEmprestar.rentHistory.push(novoRentHistory);
 
@@ -44,8 +49,7 @@ const ModalEmprestarLivro = ({ onClick, livroSelecionado }) => {
             livroParaEmprestar
         );
         request(url, options);
-
-        alert('Livro cadastrado com sucesso');
+        setDevolvido();
         setFecharModal(onClick);
     }
 
@@ -55,26 +59,29 @@ const ModalEmprestarLivro = ({ onClick, livroSelecionado }) => {
                 <h3>Informe os dados do aluno antes de continuar</h3>
                 <form>
                     <InputGeral
+                        required
                         type="text"
                         placeholder="Nome do aluno"
                         {...aluno}
                     />
                     <InputGeral type="text" placeholder="Turma" {...classe} />
                     <InputGeral
+                        required
                         type="text"
                         placeholder="Data da retirada"
                         onFocus={({ target }) => {
                             target.type = 'date';
                         }}
-                        {...dataEntrada}
+                        {...dataRetirada}
                     />
                     <InputGeral
+                        required
                         type="text"
                         placeholder="Data da Entrega"
                         onFocus={({ target }) => {
                             target.type = 'date';
                         }}
-                        {...dataSaida}
+                        {...dataEntrega}
                     />
                 </form>
                 <div style={{ width: '272px', alignSelf: 'flex-end' }}>

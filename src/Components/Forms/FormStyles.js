@@ -75,7 +75,7 @@ export const InputGeral = styled.input`
     text-align: left;
     font-size: clamp(16px, 18px, 21px);
     border-radius: 5px;
-    border: 1px solid #133052;
+    border: ${(props) => props.border || '1px solid #133052'};
     outline: none;
 
     &::placeholder {

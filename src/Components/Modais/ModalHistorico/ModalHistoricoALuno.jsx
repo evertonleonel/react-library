@@ -4,13 +4,13 @@ import ModalBotaoFechar from '../ModalBotaoFechar';
 import { HistoricoLivro } from './ModalHistorico';
 import TabelaHistorico from './TabelaHistorico';
 
-const ModalHistoricoALuno = () => {
+const ModalHistoricoALuno = ({ onClick, livroSelecionado }) => {
     return (
         <Modal>
             <HistoricoLivro>
                 <h2>Histórico de empréstimos do livro</h2>
-                <TabelaHistorico />
-                <ModalBotaoFechar />
+                <TabelaHistorico livroSelecionado={livroSelecionado} />
+                <ModalBotaoFechar onClick={onClick} />
             </HistoricoLivro>
         </Modal>
     );

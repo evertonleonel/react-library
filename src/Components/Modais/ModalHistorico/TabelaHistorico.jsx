@@ -1,8 +1,79 @@
 import React from 'react';
-import FiltroLivro from '../../../Assets/seta_baixo.svg';
+import FiltroLivro from '../../../Assets/filtroEmprestimo.svg';
+import useForm from '../../../Hooks/useForm';
+import { InputGeral } from '../../Forms/FormStyles';
 import { TabelaConteiner } from './ModalHistorico';
 
-const TabelaHistorico = () => {
+const TabelaHistorico = ({ livroSelecionado }) => {
+    const [historicoAluno, setHistoricoAluno] = React.useState(
+        livroSelecionado.rentHistory
+    );
+    let [historicoFiltrado, setHistoricoFiltrado] = React.useState([
+        livroSelecionado.rentHistory,
+    ]);
+
+    const aluno = useForm();
+    const turma = useForm();
+    const dataEntrada = useForm();
+    const dataEntrega = useForm();
+
+    function formatarData(dataAtual) {
+        let formatarData = dataAtual.value;
+        return formatarData.split('-').reverse().join('/');
+    }
+
+    React.useEffect(() => {
+        if (
+            aluno.value ||
+            turma.value ||
+            dataEntrada.value ||
+            dataEntrega.value
+        ) {
+            filtrarLivros();
+        } else {
+            setHistoricoFiltrado(historicoAluno);
+        }
+    }, [aluno.value, turma.value, dataEntrada.value, dataEntrega.value]);
+
+    const filtrarLivros = () => {
+        if (aluno.validate()) {
+            historicoFiltrado = historicoAluno.filter(
+                (historico) =>
+                    historico.studentName
+                        .toLowerCase()
+                        .indexOf(aluno.value.toLowerCase()) > -1
+            );
+        }
+
+        if (turma.validate()) {
+            historicoFiltrado = historicoAluno.filter(
+                (historico) =>
+                    historico.class
+                        .toLowerCase()
+                        .indexOf(turma.value.toLowerCase()) > -1
+            );
+        }
+
+        if (dataEntrada.validate()) {
+            historicoFiltrado = historicoAluno.filter(
+                (historico) =>
+                    historico.withdrawalDate.indexOf(
+                        formatarData(dataEntrada)
+                    ) > -1
+            );
+        }
+
+        if (dataEntrega.validate()) {
+            historicoFiltrado = historicoAluno.filter(
+                (historico) =>
+                    historico.deliveryDate.indexOf(formatarData(dataEntrega)) >
+                    -1
+            );
+        }
+
+        setHistoricoFiltrado(historicoFiltrado);
+    };
+
     return (
         <TabelaConteiner>
             <table>
@@ -10,7 +81,6 @@ const TabelaHistorico = () => {
                     <tr>
                         <th>Aluno</th>
                         <th>Turma</th>
-                        <th>Livro</th>
                         <th>Data da Retirada</th>
                         <th>Data da Entrega</th>
                     </tr>
@@ -18,52 +88,34 @@ const TabelaHistorico = () => {
                 <tbody>
                     <tr>
                         <td className="filtro-livro">
-                            <input type="text" />
+                            <InputGeral type="text" {...aluno} />
                             <img src={FiltroLivro} alt="icone filtro" />
                         </td>
                         <td className="filtro-livro">
-                            <input type="text" />
+                            <InputGeral type="text" {...turma} />
+                            <img src={FiltroLivro} alt="icone filtro" />
+                        </td>
+
+                        <td className="filtro-livro">
+                            <InputGeral type="date" {...dataEntrada} />
                             <img src={FiltroLivro} alt="icone filtro" />
                         </td>
                         <td className="filtro-livro">
-                            <input type="text" />
+                            <InputGeral type="date" {...dataEntrega} />
                             <img src={FiltroLivro} alt="icone filtro" />
                         </td>
-                        <td className="filtro-livro">
-                            <input type="date" />
-                        </td>
-                        <td className="filtro-livro">
-                            <input type="date" />
-                        </td>
                     </tr>
-                    <tr>
-                        <td>Pedro O. Garcia</td>
-                        <td>T41</td>
-                        <td>Mais esperto que o diabo</td>
-                        <td>01/01/2022</td>
-                        <td>10/01/2022</td>
-                    </tr>
-                    <tr>
-                        <td>Tamires V. Moura</td>
-                        <td>T54</td>
-                        <td>Pai Rico Pai Pobre</td>
-                        <td>13/01/2022</td>
-                        <td>23/01/2022</td>
-                    </tr>
-                    <tr>
-                        <td>João A. Albuns</td>
-                        <td>T42</td>
-                        <td>Os segredos da mente milionária</td>
-                        <td>23/01/2022</td>
-                        <td>28/01/2022</td>
-                    </tr>
-                    <tr>
-                        <td>Gustavo D. Silva</td>
-                        <td>T13</td>
-                        <td>Mindeset</td>
-                        <td>01/02/2022</td>
-                        <td>10/02/2022</td>
-                    </tr>
+                    {historicoAluno &&
+                        historicoFiltrado.map((aluno, index) => {
+                            return (
+                                <tr key={index}>
+                                    <td>{aluno.studentName}</td>
+                                    <td>{aluno.class}</td>
+                                    <td>{aluno.withdrawalDate}</td>
+                                    <td>{aluno.deliveryDate}</td>
+                                </tr>
+                            );
+                        })}
                 </tbody>
             </table>
         </TabelaConteiner>
