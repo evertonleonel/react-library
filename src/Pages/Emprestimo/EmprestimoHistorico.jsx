@@ -1,18 +1,16 @@
 import React from 'react';
 import FiltroLivro from '../../Assets/filtroEmprestimo.svg';
 import { InputGeral } from '../../Components/Forms/FormStyles';
-import { LivroContext } from '../../Hooks/LivroContext';
 import useFetch from '../../Hooks/useFetch';
 import useForm from '../../Hooks/useForm';
+import { GET_BOOKS } from '../../Services/api';
 import { ContainerTabela, TabelaContent } from './EmprestimoStyle';
 
 const EmprestimoHistorico = () => {
-    const global = React.useContext(LivroContext);
-    const allLivros = global.livros;
-
     const [historicoLivros, setHistoricoLivros] = React.useState([]);
-
     const [livroFiltrado, setLivoFiltrado] = React.useState([]);
+    const [livros, setLivros] = React.useState('');
+    const { request } = useFetch();
 
     const aluno = useForm();
     const classe = useForm();
@@ -21,29 +19,59 @@ const EmprestimoHistorico = () => {
     const dataEntrega = useForm();
 
     const buscarLivros = async () => {
-        await global.fetchLivro();
-        return true;
+        const { url, options } = GET_BOOKS();
+        request(url, options);
+
+        const response = await fetch(url, options);
+        const json = await response.json();
+
+        setLivros(json);
     };
 
     React.useEffect(() => {
         buscarLivros();
+        pegarHistoricos();
     }, []);
 
-    function pegarHistoricos() {
-        const tratarLivros = allLivros.map((book) => ({
+    async function pegarHistoricos() {
+        let books = livros;
+
+        const tratarLivros = books.map((book) => ({
             tittle: book.tittle,
             rentHistory: book.rentHistory,
         }));
 
-        console.log(tratarLivros);
+        let arrayNomes = [];
 
-        return setHistoricoLivros(tratarLivros);
+        const pegarNomes = (livros) => {
+            livros.forEach((livro) => {
+                let alunos = livro.rentHistory;
+                alunos.map((aluno) => {
+                    arrayNomes.push(aluno.studentName);
+                });
+            });
+        };
+        pegarNomes(tratarLivros);
+
+        console.log(arrayNomes, 'nomes');
+
+        setHistoricoLivros(tratarLivros);
+        return true;
     }
+    console.log(historicoLivros);
 
-    // function formatarData(dataAtual) {
-    //     let formatarData = dataAtual.value;
-    //     return formatarData.split('-').reverse().join('/');
-    // }
+    const nomes = historicoLivros.forEach((historico) => {
+        return historico.rentHistory.map((aluno) => {
+            return aluno.studentName;
+        });
+    });
+
+    console.log(nomes);
+
+    function formatarData(dataAtual) {
+        let formatarData = dataAtual.value;
+        return formatarData.split('-').reverse().join('/');
+    }
 
     //   const filtrarHistorico =  (filtro, campo) => {
     //     const livros =  obterHistoricos();
@@ -91,8 +119,8 @@ const EmprestimoHistorico = () => {
                                 <InputGeral type="date" {...dataEntrega} />
                             </td>
                         </tr>
-                        {historicoLivros &&
-                            historicoLivros.map((livro, index) => {
+                        {livros &&
+                            livros.map((livro, index) => {
                                 return (
                                     <tr id={index}>
                                         <td>{livro.rentHistory.studentName}</td>

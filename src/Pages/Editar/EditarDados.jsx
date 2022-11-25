@@ -4,13 +4,16 @@ import { InputGeral } from '../../Components/Forms/FormStyles';
 import useForm from '../../Hooks/useForm';
 import useFetch from '../../Hooks/useFetch';
 import { BOOKS_POST } from '../../Services/api';
-import { InputContainer, NovoLivro } from './CadastroStyles';
-import CadastroImagem from './CadastroImagem';
-import CadastroBotoes from './CadastroBotoes';
 import { converterEmBase64 } from '../../Services/api';
 import { v4 as uuidv4 } from 'uuid';
+import { EditarContainer, EditarLivro, InputContainer } from './EditarStyles';
+import { useNavigate } from 'react-router-dom';
+import EditarBotoes from './EditarBotoes';
+import EditarImagem from './EditarImagem';
+import LinkVoltar from '../../Components/LinkVoltar/LinkVoltar';
 
-const CadastroDados = () => {
+const EditarDados = () => {
+    const navigate = useNavigate();
     const titulo = useForm();
     const autor = useForm();
     const genero = useForm();
@@ -56,9 +59,10 @@ const CadastroDados = () => {
     }
 
     return (
-        <section>
-            <NovoLivro onSubmit={handleSubmit}>
-                <CadastroImagem
+        <EditarContainer>
+            <LinkVoltar pagina="Editar livro" />
+            <EditarLivro onSubmit={handleSubmit}>
+                <EditarImagem
                     alt={titulo.value}
                     src={img}
                     type="file"
@@ -106,11 +110,11 @@ const CadastroDados = () => {
                             />
                         </div>
                     </InputContainer>
-                    <CadastroBotoes />
+                    <EditarBotoes />
                 </div>
-            </NovoLivro>
-        </section>
+            </EditarLivro>
+        </EditarContainer>
     );
 };
 
-export default CadastroDados;
+export default EditarDados;

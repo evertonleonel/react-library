@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../../Components/Forms/Button';
 import { BotoesModal } from './ModalLivro';
 
@@ -12,6 +13,7 @@ const ModalBotoes = ({
     React.useEffect(() => {
         setAtivo(statusLivro);
     }, [statusLivro]);
+    const navigate = useNavigate();
 
     return (
         <BotoesModal>
@@ -20,6 +22,9 @@ const ModalBotoes = ({
                 color={'#167ce2'}
                 cor={'#fff'}
                 width={'9rem'}
+                onClick={() => {
+                    navigate('/editar');
+                }}
             >
                 Editar
             </Button>

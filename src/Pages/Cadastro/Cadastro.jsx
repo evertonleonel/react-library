@@ -8,10 +8,7 @@ const Cadastro = () => {
     return (
         <>
             <Header />
-            <ContainerMain>
-                <LinkVoltar pagina="Cadastrar novo livro" />
-                <CadastroDados />
-            </ContainerMain>
+            <CadastroDados />
         </>
     );
 };

@@ -22,11 +22,33 @@ export const ImgCapa = styled.div`
     }
 `;
 
+export const CadastroContainer = styled.section`
+    background-color: #fff;
+    margin: 24px;
+    height: calc(100vh - 144px);
+    display: flex;
+    position: relative;
+
+    @media (max-width: 1030px) {
+        height: 100%;
+    }
+`;
+
 export const NovoLivro = styled.form`
     display: flex;
     justify-content: center;
+
     gap: 48px;
     margin: 167px auto;
+
+    @media (max-width: 1030px) {
+        gap: 24px;
+        background-color: red;
+        div {
+            align-items: center;
+            justify-content: center;
+        }
+    }
 
     .botoes {
         width: 14.3rem;

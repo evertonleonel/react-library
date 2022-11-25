@@ -4,11 +4,12 @@ import { InputGeral } from '../../Components/Forms/FormStyles';
 import useForm from '../../Hooks/useForm';
 import useFetch from '../../Hooks/useFetch';
 import { BOOKS_POST } from '../../Services/api';
-import { InputContainer, NovoLivro } from './CadastroStyles';
+import { CadastroContainer, InputContainer, NovoLivro } from './CadastroStyles';
 import CadastroImagem from './CadastroImagem';
 import CadastroBotoes from './CadastroBotoes';
 import { converterEmBase64 } from '../../Services/api';
 import { v4 as uuidv4 } from 'uuid';
+import LinkVoltar from '../../Components/LinkVoltar/LinkVoltar';
 
 const CadastroDados = () => {
     const titulo = useForm();
@@ -56,7 +57,8 @@ const CadastroDados = () => {
     }
 
     return (
-        <section>
+        <CadastroContainer>
+            <LinkVoltar pagina="Cadastrar novo livro" />
             <NovoLivro onSubmit={handleSubmit}>
                 <CadastroImagem
                     alt={titulo.value}
@@ -109,7 +111,7 @@ const CadastroDados = () => {
                     <CadastroBotoes />
                 </div>
             </NovoLivro>
-        </section>
+        </CadastroContainer>
     );
 };
 

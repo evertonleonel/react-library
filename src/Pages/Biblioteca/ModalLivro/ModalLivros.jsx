@@ -157,6 +157,7 @@ const ModalLivros = ({ livroSelecionado, onClick }) => {
                                         }}
                                         cor={'#F4F4F4'}
                                         border={'1px solid #ADB5BD'}
+                                        disabled={statusLivro ? true : false}
                                     >
                                         <img
                                             src={IconeLivro}

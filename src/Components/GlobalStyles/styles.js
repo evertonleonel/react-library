@@ -23,7 +23,7 @@ export const ContainerMain = styled.main`
     max-width: 1318px;
     margin: 24px auto;
     border-radius: 5px;
-    background-color: #ffffff;
+    background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
