@@ -36,8 +36,9 @@ const ModalInativarLivro = ({
 
         const { url, options } = STATUS_POST(livroSelecionado, livroStatus);
         request(url, options);
-        motivoInativacao(livroStatus);
+
         setFecharModal(onClick);
+        motivoInativacao(livroStatus.status.description);
     }
 
     return (
