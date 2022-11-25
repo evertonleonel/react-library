@@ -72,6 +72,10 @@ const ModalLivros = ({ livroSelecionado, onClick }) => {
         setLivros(json);
         setHistoricoLivro(json.rentHistory);
 
+        json.status.description
+            ? setUltimaInativacao(json.status.description)
+            : setUltimaInativacao('');
+
         json.status.isActive ? setStatusLivro(false) : setStatusLivro(true);
 
         if (json.rentHistory.length > 0) {
