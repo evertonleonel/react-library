@@ -3,7 +3,7 @@ import TextArea from '../../Components/Forms/TextArea';
 import { InputGeral } from '../../Components/Forms/FormStyles';
 import useForm from '../../Hooks/useForm';
 import useFetch from '../../Hooks/useFetch';
-import { BOOKS_POST } from '../../Services/api';
+import { BOOKS_POST, EDIT_LIVRO_POST } from '../../Services/api';
 import { converterEmBase64 } from '../../Services/api';
 import { v4 as uuidv4 } from 'uuid';
 import { EditarContainer, EditarLivro, InputContainer } from './EditarStyles';
@@ -12,7 +12,7 @@ import EditarBotoes from './EditarBotoes';
 import EditarImagem from './EditarImagem';
 import LinkVoltar from '../../Components/LinkVoltar/LinkVoltar';
 
-const EditarDados = () => {
+const EditarDados = ({ livroSelecionado }) => {
     const navigate = useNavigate();
     const titulo = useForm();
     const autor = useForm();
@@ -27,11 +27,13 @@ const EditarDados = () => {
         return formatarData.split('-').reverse().join('/');
     }
 
+    console.log(livroSelecionado);
+
     function handleSubmit(event) {
         event.preventDefault();
         if (!img) return alert('Escolha uma imagem');
 
-        const novoLivro = {
+        const editarLivro = {
             id: uuidv4(),
             tittle: titulo.value,
             author: autor.value,
@@ -46,7 +48,7 @@ const EditarDados = () => {
             rentHistory: [],
         };
 
-        const { url, options } = BOOKS_POST(novoLivro);
+        const { url, options } = EDIT_LIVRO_POST(livroSelecionado, editarLivro);
         request(url, options);
 
         alert('Livro cadastrado com sucesso');

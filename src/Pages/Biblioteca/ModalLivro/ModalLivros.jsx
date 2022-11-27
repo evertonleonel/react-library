@@ -30,6 +30,7 @@ const ModalLivros = ({ livroSelecionado, onClick }) => {
     const [modalHistoricoAluno, setModalHistoricoAluno] = React.useState(false);
     const [ultimaInativacao, setUltimaInativacao] = React.useState('');
     const [ultimoEmprestimo, setUltimoEmprestimo] = React.useState([]);
+    const [emprestou, setEmprestou] = React.useState(false);
 
     const [devolvido, setDevolvido] = React.useState(false);
     const { request } = useFetch();
@@ -79,32 +80,14 @@ const ModalLivros = ({ livroSelecionado, onClick }) => {
         json.status.isActive ? setStatusLivro(false) : setStatusLivro(true);
 
         if (json.rentHistory.length > 0) {
-            emprestar(json.rentHistory);
             let historico = json.rentHistory;
             setUltimoEmprestimo(historico[historico.length - 1]);
         }
     };
 
-    React.useEffect(
-        () => {
-            fetchLivro();
-        },
-        [livroSelecionado.id],
-        [historicoLivro],
-        [statusLivro],
-        [ultimaInativacao]
-    );
-
-    function emprestar(emprestismo) {
-        let ultimaDatadoEmprestimo =
-            emprestismo[emprestismo.length - 1].deliveryDate;
-        const dataEmprestimo = new Date(
-            ultimaDatadoEmprestimo.split('-').reverse().join('/')
-        );
-        dataEmprestimo > new Date()
-            ? setModalEmprestar(true)
-            : setModalEmprestar(false);
-    }
+    React.useEffect(() => {
+        fetchLivro();
+    }, [emprestou]);
 
     async function devolverLivro() {
         let dataAtual = new Date();
@@ -116,8 +99,9 @@ const ModalLivros = ({ livroSelecionado, onClick }) => {
         const { url, options } = RENT_POST(livroSelecionado, livroDevolvido);
         request(url, options);
         setHistoricoLivro(livroDevolvido.rentHistory);
-        fetchLivro();
+        setEmprestou(false);
         setDevolvido(!devolvido);
+        fetchLivro();
     }
 
     async function limparMotivoInativar() {
@@ -157,7 +141,6 @@ const ModalLivros = ({ livroSelecionado, onClick }) => {
                                         }}
                                         cor={'#F4F4F4'}
                                         border={'1px solid #ADB5BD'}
-                                        disabled={statusLivro ? true : false}
                                     >
                                         <img
                                             src={IconeLivro}
@@ -216,6 +199,7 @@ const ModalLivros = ({ livroSelecionado, onClick }) => {
                                     abrirHistoricoAluno={
                                         abriModalHistoricoALuno
                                     }
+                                    setModalLivro={setModalLivro}
                                 />
 
                                 <div className="BotaoFecharModal">
@@ -223,15 +207,11 @@ const ModalLivros = ({ livroSelecionado, onClick }) => {
                                 </div>
                             </ContainerDireito>
                         </ContainerPrincipal>
-                        {historicoLivro && devolvido && (
-                            <ModalExtra
-                                historicoLivro={historicoLivro}
-                                ultimoEmprestimo={ultimoEmprestimo}
-                                setUltimoEmprestimo={() => setUltimoEmprestimo}
-                            />
+                        {emprestou && (
+                            <ModalExtra ultimoEmprestimo={ultimoEmprestimo} />
                         )}
 
-                        {ultimaInativacao && (
+                        {ultimaInativacao && emprestou && (
                             <ModalExtraInativar
                                 ultimaInativacao={ultimaInativacao}
                             />
@@ -239,12 +219,13 @@ const ModalLivros = ({ livroSelecionado, onClick }) => {
                     </ModalLivroContent>
                 </Modal>
             )}
-            {modalEmprestar && (
+            {modalEmprestar && ultimoEmprestimo && (
                 <ModalEmprestarLivro
                     onClick={fecharModalEmprestar}
                     setModalLivro={setModalLivro}
                     livroSelecionado={livros}
                     setDevolvido={() => setDevolvido(true)}
+                    emprestar={() => setEmprestou(true)}
                 />
             )}
             {modalInativar && (

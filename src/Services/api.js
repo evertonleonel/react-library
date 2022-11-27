@@ -73,6 +73,19 @@ export function STATUS_POST(livro, body) {
     };
 }
 
+export function EDIT_LIVRO_POST(livro, body) {
+    return {
+        url: API_URL + `/books/${livro.id}`,
+        options: {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(body),
+        },
+    };
+}
+
 export const getUser = () => {
     const data = localStorage.getItem('users');
     return data ? JSON.parse(data) : {};

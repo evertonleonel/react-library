@@ -8,6 +8,7 @@ const ModalBotoes = ({
     statusLivro,
     ativarLivro,
     abrirHistoricoAluno,
+    livroSelecionado,
 }) => {
     const [ativo, setAtivo] = React.useState('');
     React.useEffect(() => {
@@ -25,6 +26,7 @@ const ModalBotoes = ({
                 onClick={() => {
                     navigate('/editar');
                 }}
+                livroSelecionado={livroSelecionado}
             >
                 Editar
             </Button>

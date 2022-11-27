@@ -7,83 +7,115 @@ import { GET_BOOKS } from '../../Services/api';
 import { ContainerTabela, TabelaContent } from './EmprestimoStyle';
 
 const EmprestimoHistorico = () => {
-    const [historicoLivros, setHistoricoLivros] = React.useState([]);
-    const [livroFiltrado, setLivoFiltrado] = React.useState([]);
+    const [livroFiltrado, setLivroFiltrado] = React.useState([]);
     const [livros, setLivros] = React.useState('');
+    const [buscarTitulo, setBuscarTitulo] = React.useState('');
+    const [buscarNome, setBuscarNome] = React.useState('');
+    const [buscarClasse, setBuscarClasse] = React.useState('');
+    const [buscarDataRetirada, setBuscarDataRetirada] = React.useState('');
+    const [buscarDataEntrega, setBuscarDataEntrega] = React.useState('');
+
     const { request } = useFetch();
 
-    const aluno = useForm();
-    const classe = useForm();
-    const livro = useForm();
-    const dataRetirada = useForm();
-    const dataEntrega = useForm();
+    React.useEffect(() => {
+        buscarLivros();
+    }, [
+        buscarNome,
+        buscarTitulo,
+        buscarClasse,
+        buscarDataRetirada,
+        buscarDataEntrega,
+    ]);
 
     const buscarLivros = async () => {
         const { url, options } = GET_BOOKS();
         request(url, options);
-
         const response = await fetch(url, options);
         const json = await response.json();
+        setLivros(json.filter((book) => book.rentHistory.length > 0));
 
-        setLivros(json);
+        if (
+            buscarClasse ||
+            buscarNome ||
+            buscarTitulo ||
+            buscarDataRetirada ||
+            buscarDataEntrega
+        ) {
+            filtrando();
+        } else {
+            setLivroFiltrado(
+                json.filter((book) => book.rentHistory.length > 0)
+            );
+        }
     };
 
-    React.useEffect(() => {
-        buscarLivros();
-        pegarHistoricos();
-    }, []);
+    async function filtrando() {
+        if (buscarTitulo) {
+            const filtrarPorTitulo = livros.filter(
+                (livro) =>
+                    livro.tittle
+                        .toLowerCase()
+                        .indexOf(buscarTitulo.toLowerCase()) > -1
+            );
+            setLivroFiltrado(filtrarPorTitulo);
+        }
 
-    async function pegarHistoricos() {
-        let books = livros;
-
-        const tratarLivros = books.map((book) => ({
-            tittle: book.tittle,
-            rentHistory: book.rentHistory,
-        }));
-
-        let arrayNomes = [];
-
-        const pegarNomes = (livros) => {
+        if (buscarNome) {
             livros.forEach((livro) => {
-                let alunos = livro.rentHistory;
-                alunos.map((aluno) => {
-                    arrayNomes.push(aluno.studentName);
-                });
+                livro.rentHistory = livro.rentHistory.filter(
+                    (historico) =>
+                        historico.studentName
+                            .toLowerCase()
+                            .indexOf(buscarNome.toLowerCase()) > -1
+                );
             });
-        };
-        pegarNomes(tratarLivros);
+            setLivroFiltrado(livros);
+        }
 
-        console.log(arrayNomes, 'nomes');
+        if (buscarClasse) {
+            livros.forEach((livro) => {
+                livro.rentHistory = livro.rentHistory.filter(
+                    (historico) =>
+                        historico.class
+                            .toLowerCase()
+                            .indexOf(buscarClasse.toLowerCase()) > -1
+                );
+            });
 
-        setHistoricoLivros(tratarLivros);
-        return true;
+            setLivroFiltrado(livros);
+        }
+
+        if (buscarDataRetirada) {
+            livros.forEach((livro) => {
+                livro.rentHistory = livro.rentHistory.filter(
+                    (historico) =>
+                        historico.withdrawalDate
+                            .toLowerCase()
+                            .indexOf(
+                                formatarData(buscarDataRetirada).toLowerCase()
+                            ) > -1
+                );
+            });
+        }
+
+        if (buscarDataEntrega) {
+            livros.forEach((livro) => {
+                livro.rentHistory = livro.rentHistory.filter(
+                    (historico) =>
+                        historico.deliveryDate
+                            .toLowerCase()
+                            .indexOf(
+                                formatarData(buscarDataEntrega).toLowerCase()
+                            ) > -1
+                );
+            });
+        }
     }
-    console.log(historicoLivros);
-
-    const nomes = historicoLivros.forEach((historico) => {
-        return historico.rentHistory.map((aluno) => {
-            return aluno.studentName;
-        });
-    });
-
-    console.log(nomes);
 
     function formatarData(dataAtual) {
-        let formatarData = dataAtual.value;
+        let formatarData = dataAtual;
         return formatarData.split('-').reverse().join('/');
     }
-
-    //   const filtrarHistorico =  (filtro, campo) => {
-    //     const livros =  obterHistoricos();
-
-    //     livros.forEach((livro) => {
-    //       livro.rentHistory = livro.rentHistory.filter((historico) =>
-    //         historico[campo].toLowerCase().indexOf(filtro.toLowerCase()) > -1
-    //       );
-    //     });
-
-    //     renderizarHistorico(livros);
-    //   };
 
     return (
         <ContainerTabela>
@@ -101,34 +133,77 @@ const EmprestimoHistorico = () => {
                     <tbody>
                         <tr>
                             <td className="filtro-livro">
-                                <InputGeral type="text" {...aluno} />
+                                <input
+                                    type="text"
+                                    value={buscarNome}
+                                    onChange={(event) =>
+                                        setBuscarNome(event.target.value)
+                                    }
+                                />
+                                {/* <InputGeral type="text" {...aluno} /> */}
                                 <img src={FiltroLivro} alt="icone filtro" />
                             </td>
                             <td className="filtro-livro">
-                                <InputGeral type="text" {...classe} />
+                                <input
+                                    type="text"
+                                    value={buscarClasse}
+                                    onChange={(event) =>
+                                        setBuscarClasse(event.target.value)
+                                    }
+                                />
+
                                 <img src={FiltroLivro} alt="icone filtro" />
                             </td>
                             <td className="filtro-livro">
-                                <InputGeral type="text" {...livro} />
+                                <input
+                                    type="text"
+                                    value={buscarTitulo}
+                                    onChange={(event) =>
+                                        setBuscarTitulo(event.target.value)
+                                    }
+                                />
+
                                 <img src={FiltroLivro} alt="icone filtro" />
                             </td>
                             <td className="filtro-livro">
-                                <InputGeral type="date" {...dataRetirada} />
+                                <input
+                                    type="text"
+                                    value={buscarDataRetirada}
+                                    onChange={(event) =>
+                                        setBuscarDataRetirada(
+                                            event.target.value
+                                        )
+                                    }
+                                />
                             </td>
                             <td className="filtro-livro">
-                                <InputGeral type="date" {...dataEntrega} />
+                                <input
+                                    type="text"
+                                    value={buscarDataEntrega}
+                                    onChange={(event) =>
+                                        setBuscarDataEntrega(event.target.value)
+                                    }
+                                />
                             </td>
                         </tr>
-                        {livros &&
-                            livros.map((livro, index) => {
-                                return (
-                                    <tr id={index}>
-                                        <td>{livro.rentHistory.studentName}</td>
-                                        <td>{livro.tittle}</td>
-                                        <td>T41</td>
-                                        <td>01/01/2022</td>
-                                        <td>10/01/2022</td>
-                                    </tr>
+                        {livroFiltrado &&
+                            livroFiltrado.map((livro) => {
+                                return livro.rentHistory.map(
+                                    (historico, index) => {
+                                        return (
+                                            <tr key={index}>
+                                                <td>{historico.studentName}</td>
+                                                <td>{historico.class}</td>
+                                                <td>{livro.tittle}</td>
+                                                <td>
+                                                    {historico.withdrawalDate}
+                                                </td>
+                                                <td>
+                                                    {historico.deliveryDate}
+                                                </td>
+                                            </tr>
+                                        );
+                                    }
                                 );
                             })}
                     </tbody>

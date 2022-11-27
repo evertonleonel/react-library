@@ -10,7 +10,12 @@ import { RENT_POST } from '../../../Services/api';
 import { InputGeral } from '../../Forms/FormStyles';
 import { validarData } from '../../../Services/api';
 
-const ModalEmprestarLivro = ({ onClick, livroSelecionado, setDevolvido }) => {
+const ModalEmprestarLivro = ({
+    onClick,
+    livroSelecionado,
+    setDevolvido,
+    emprestar,
+}) => {
     const [fecharModal, setFecharModal] = React.useState(null);
     const [livroParaEmprestar, setLivroParaEmprestar] = React.useState(null);
     const { request } = useFetch();
@@ -50,6 +55,7 @@ const ModalEmprestarLivro = ({ onClick, livroSelecionado, setDevolvido }) => {
         );
         request(url, options);
         setDevolvido();
+        emprestar();
         setFecharModal(onClick);
     }
 
