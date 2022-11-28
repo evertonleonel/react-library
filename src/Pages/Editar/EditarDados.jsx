@@ -42,6 +42,11 @@ const EditarDados = () => {
         return formatarData.split('-').reverse().join('/');
     }
 
+    function formatarDataParaInput(dataAtual) {
+        let formatarData = dataAtual;
+        return formatarData.split('/').reverse().join('-');
+    }
+
     function handleSubmit(event) {
         event.preventDefault();
         if (!img) alert('Usar a mesma imagem?');
@@ -58,7 +63,7 @@ const EditarDados = () => {
             image: img ? img : livroSelecionado.image,
             systemEntryDate: dataEntrada
                 ? formatarData(dataEntrada)
-                : livroSelecionado.systemEntryDate,
+                : formatarData(livroSelecionado.systemEntryDate),
             synopsis: sinopse ? sinopse : livroSelecionado.synopsis,
             rentHistory: [],
         };
@@ -178,10 +183,11 @@ const EditarDados = () => {
                             <InputGeral
                                 required
                                 className="dataEntrada"
-                                type="text"
-                                defaultValue={livroSelecionado.systemEntryDate}
+                                type="date"
+                                defaultValue={formatarDataParaInput(
+                                    livroSelecionado.systemEntryDate
+                                )}
                                 onChange={(event) => {
-                                    event.target.type = 'date';
                                     setDataEntrada(event.target.value);
                                 }}
                             />
