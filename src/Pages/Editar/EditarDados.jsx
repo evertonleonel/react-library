@@ -11,6 +11,7 @@ import {
     EditTextArea,
     ImgCapa,
     InputContainer,
+    SelectionFiltro,
 } from './EditarStyles';
 import { useNavigate } from 'react-router-dom';
 import EditarBotoes from './EditarBotoes';
@@ -18,6 +19,7 @@ import EditarBotoes from './EditarBotoes';
 import LinkVoltar from '../../Components/LinkVoltar/LinkVoltar';
 import Adicionar from '../../Assets/adicionar.svg';
 import { InputGeral } from '../../Components/Forms/FormStyles';
+import Options from '../../Components/Filtro/Options';
 
 const EditarDados = () => {
     const navigate = useNavigate();
@@ -72,6 +74,11 @@ const EditarDados = () => {
         const raw = target.files[0];
         const baseImg = await converterEmBase64(raw);
         setImg(baseImg);
+    }
+
+    function filtroChange(event) {
+        const { value } = event.target;
+        setGenero(value);
     }
 
     return (
@@ -143,24 +150,40 @@ const EditarDados = () => {
                                     setAutor(event.target.value)
                                 }
                             />
-                            <InputGeral
-                                required
+
+                            <SelectionFiltro
                                 className="genero"
-                                type="text"
-                                placeholder="Gênero"
-                                defaultValue={livroSelecionado.genre}
-                                onChange={(event) =>
-                                    setGenero(event.target.value)
-                                }
-                            />
+                                onChange={filtroChange}
+                            >
+                                <Options disabled item="Gênero" />
+
+                                <Options
+                                    defaultValue={livroSelecionado.genre}
+                                    item="Fantasia"
+                                />
+                                <Options
+                                    defaultValue={livroSelecionado.genre}
+                                    item="Autoajuda"
+                                />
+                                <Options
+                                    defaultValue={livroSelecionado.genre}
+                                    item="Finanças"
+                                />
+                                <Options
+                                    defaultValue={livroSelecionado.genre}
+                                    item="Web Marketing"
+                                />
+                            </SelectionFiltro>
+
                             <InputGeral
                                 required
                                 className="dataEntrada"
-                                type="date"
+                                type="text"
                                 defaultValue={livroSelecionado.systemEntryDate}
-                                onChange={(event) =>
-                                    setDataEntrada(event.target.value)
-                                }
+                                onChange={(event) => {
+                                    event.target.type = 'date';
+                                    setDataEntrada(event.target.value);
+                                }}
                             />
                         </div>
                     </InputContainer>

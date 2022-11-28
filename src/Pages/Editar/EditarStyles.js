@@ -140,3 +140,14 @@ export const EditTextArea = styled.textarea`
         font-size: calc(14px, 16px, 19px);
     }
 `;
+
+export const SelectionFiltro = styled.select`
+    width: 100%;
+    height: 53px;
+    font-size: clamp(16px, 18px, 21px);
+    background-color: #ffffff;
+    color: #133052;
+    border: '1px solid #133052';
+    border-radius: 5px;
+    padding: 14px;
+`;

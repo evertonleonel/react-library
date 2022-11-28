@@ -12,6 +12,7 @@ const ModalInativarLivro = ({
     onClick,
     livroSelecionado,
     motivoInativacao,
+    setStatusLivro,
 }) => {
     const [fecharModal, setFecharModal] = React.useState(null);
     const { request } = useFetch();
@@ -38,6 +39,7 @@ const ModalInativarLivro = ({
         request(url, options);
 
         setFecharModal(onClick);
+        setStatusLivro();
         motivoInativacao(livroStatus.status.description);
     }
 

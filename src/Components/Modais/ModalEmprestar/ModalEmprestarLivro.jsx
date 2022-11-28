@@ -14,7 +14,8 @@ const ModalEmprestarLivro = ({
     onClick,
     livroSelecionado,
     setDevolvido,
-    emprestar,
+    setEmprestou,
+    setUltimoEmprestimo,
 }) => {
     const [fecharModal, setFecharModal] = React.useState(null);
     const [livroParaEmprestar, setLivroParaEmprestar] = React.useState(null);
@@ -48,16 +49,23 @@ const ModalEmprestarLivro = ({
         if (!validarData(dataRetirada, dataEntrega)) return;
 
         livroParaEmprestar.rentHistory.push(novoRentHistory);
+        setUltimoEmprestimo(
+            livroParaEmprestar.rentHistory[
+                livroParaEmprestar.rentHistory.length - 1
+            ]
+        );
 
         const { url, options } = RENT_POST(
             livroSelecionado,
             livroParaEmprestar
         );
         request(url, options);
-        setDevolvido();
-        emprestar();
+        setEmprestou();
+        setDevolvido(true);
+
         setFecharModal(onClick);
     }
+    console.log(livroParaEmprestar, 'livro para emprestar');
 
     return (
         <Modal>

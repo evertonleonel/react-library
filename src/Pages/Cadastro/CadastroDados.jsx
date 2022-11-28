@@ -12,20 +12,27 @@ import LinkVoltar from '../../Components/LinkVoltar/LinkVoltar';
 import { ImgCapa } from './CadastroStyles';
 import Adicionar from '../../Assets/adicionar.svg';
 import { useNavigate } from 'react-router-dom';
+import Options from '../../Components/Filtro/Options';
+import { SelectionFiltro } from '../Cadastro/CadastroStyles';
 
 const CadastroDados = () => {
     const navigate = useNavigate();
     const titulo = useForm();
     const autor = useForm();
-    const genero = useForm();
     const sinopse = useForm();
     const dataEntrada = useForm();
     const [img, setImg] = React.useState('');
+    const [selectFiltro, setSelectFiltro] = React.useState('');
     const { request } = useFetch();
 
     function formatarData(dataAtual) {
         let formatarData = dataAtual.value;
         return formatarData.split('-').reverse().join('/');
+    }
+
+    function filtroChange(event) {
+        const { value } = event.target;
+        setSelectFiltro(value);
     }
 
     function handleSubmit(event) {
@@ -36,7 +43,7 @@ const CadastroDados = () => {
             id: uuidv4(),
             tittle: titulo.value,
             author: autor.value,
-            genre: genero.value,
+            genre: selectFiltro,
             status: {
                 isActive: true,
                 description: '',
@@ -117,13 +124,20 @@ const CadastroDados = () => {
                                 placeholder="Autor"
                                 {...autor}
                             />
-                            <InputGeral
-                                required
+                            <SelectionFiltro
                                 className="genero"
-                                type="text"
-                                placeholder="Gênero"
-                                {...genero}
-                            />
+                                onChange={filtroChange}
+                            >
+                                <Options disabled item="Filtrar" />
+                                <Options value="Gênero" item="Gênero" />
+                                <Options value="Autor" item="Autor" />
+                                <Options
+                                    value="Data de Entrada"
+                                    item="Data de Entrada"
+                                />
+                                <Options value="Sinopse" item="Sinopse" />
+                            </SelectionFiltro>
+
                             <InputGeral
                                 required
                                 className="dataEntrada"

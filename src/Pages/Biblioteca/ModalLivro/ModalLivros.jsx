@@ -31,7 +31,6 @@ const ModalLivros = ({ livroSelecionado, onClick }) => {
     const [ultimaInativacao, setUltimaInativacao] = React.useState('');
     const [ultimoEmprestimo, setUltimoEmprestimo] = React.useState([]);
     const [emprestou, setEmprestou] = React.useState(false);
-
     const [devolvido, setDevolvido] = React.useState(false);
     const { request } = useFetch();
 
@@ -43,7 +42,6 @@ const ModalLivros = ({ livroSelecionado, onClick }) => {
     function fecharModalInativar() {
         setModalInativar(false);
         setModalLivro(true);
-        setStatusLivro(true);
     }
 
     function abrirModalEmprestar() {
@@ -72,37 +70,32 @@ const ModalLivros = ({ livroSelecionado, onClick }) => {
         const json = await response.json();
         setLivros(json);
         setHistoricoLivro(json.rentHistory);
+        try {
+            if (json.rentHistory.length > 0) {
+                setUltimoEmprestimo(
+                    json.rentHistory[json.rentHistory.length - 1]
+                );
+
+                setDevolvido(true);
+            }
+        } catch (e) {
+            console.log(e);
+        }
 
         json.status.description
             ? setUltimaInativacao(json.status.description)
             : setUltimaInativacao('');
 
         json.status.isActive ? setStatusLivro(false) : setStatusLivro(true);
-
-        if (json.rentHistory.length > 0) {
-            setEmprestou(true);
-            let historico = json.rentHistory;
-            setUltimoEmprestimo(historico[historico.length - 1]);
-        }
     };
 
     React.useEffect(() => {
         fetchLivro();
-    }, [emprestou]);
+    }, []);
 
     async function devolverLivro() {
-        let dataAtual = new Date();
-        const livroDevolvido = livros;
-        livroDevolvido.rentHistory[
-            livroDevolvido.rentHistory.length - 1
-        ].deliveryDate = dataAtual.toLocaleDateString();
-
-        const { url, options } = RENT_POST(livroSelecionado, livroDevolvido);
-        request(url, options);
-        setHistoricoLivro(livroDevolvido.rentHistory);
-        setEmprestou(false);
-        setDevolvido(!devolvido);
-        fetchLivro();
+        setEmprestou(true);
+        setDevolvido(false);
     }
 
     async function limparMotivoInativar() {
@@ -131,7 +124,7 @@ const ModalLivros = ({ livroSelecionado, onClick }) => {
                         <ContainerPrincipal>
                             <ContainerEsquerdo>
                                 {livros && <ImagemLivro src={livros.image} />}
-                                {historicoLivro && !devolvido ? (
+                                {devolvido && ultimoEmprestimo ? (
                                     <Button
                                         onClick={devolverLivro}
                                         style={{
@@ -209,11 +202,11 @@ const ModalLivros = ({ livroSelecionado, onClick }) => {
                                 </div>
                             </ContainerDireito>
                         </ContainerPrincipal>
-                        {emprestou && (
+                        {devolvido && ultimoEmprestimo && (
                             <ModalExtra ultimoEmprestimo={ultimoEmprestimo} />
                         )}
 
-                        {ultimaInativacao && emprestou && (
+                        {ultimaInativacao && (
                             <ModalExtraInativar
                                 ultimaInativacao={ultimaInativacao}
                             />
@@ -223,11 +216,12 @@ const ModalLivros = ({ livroSelecionado, onClick }) => {
             )}
             {modalEmprestar && ultimoEmprestimo && (
                 <ModalEmprestarLivro
+                    setUltimoEmprestimo={setUltimoEmprestimo}
                     onClick={fecharModalEmprestar}
                     setModalLivro={setModalLivro}
                     livroSelecionado={livros}
                     setDevolvido={() => setDevolvido(true)}
-                    emprestar={() => setEmprestou(true)}
+                    setEmprestou={() => setEmprestou(true)}
                 />
             )}
             {modalInativar && (
@@ -235,6 +229,7 @@ const ModalLivros = ({ livroSelecionado, onClick }) => {
                     onClick={fecharModalInativar}
                     setModalLivro={setModalLivro}
                     statusLivro={statusLivro}
+                    setStatusLivro={() => setStatusLivro(true)}
                     livroSelecionado={livros}
                     motivoInativacao={setUltimaInativacao}
                 />
