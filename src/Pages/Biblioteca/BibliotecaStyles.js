@@ -21,6 +21,24 @@ export const DivBuscar = styled.div`
     }
 `;
 
+export const PesquisaContainer = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+
+    @media (max-width: 960px) {
+        width: 500px;
+        width: 100%;
+        justify-content: center;
+        margin: 0 10px;
+        gap: 30px;
+    }
+
+    @media (max-width: 570px) {
+        gap: 20px;
+    }
+`;
+
 export const SelectionFiltro = styled.select`
     width: 26rem;
     height: 53px;
@@ -85,6 +103,12 @@ export const LivroContainer = styled.ul`
     gap: 4rem;
     margin: 96px auto;
     width: 90%;
+
+    @media (max-width: 480px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 `;
 
 export const Image = styled.img`

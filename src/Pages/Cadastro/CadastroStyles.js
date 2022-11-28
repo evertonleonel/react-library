@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
-export const ImgCapa = styled.div`
+export const ImgCapa = styled.label`
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
 
     width: 172px;
     height: 206px;
@@ -14,11 +13,15 @@ export const ImgCapa = styled.div`
 
     border: 2px dashed currentColor;
     cursor: pointer;
-    transition: background-color 300ms ease-in-out;
 
-    &::after {
-        content: '';
-        display: block;
+    span {
+        display: flex;
+        gap: 8px;
+    }
+
+    .escolher-imagem:hover {
+        outline: 2px solid #167ce2;
+        transition: outline 100ms ease-in-out;
     }
 `;
 

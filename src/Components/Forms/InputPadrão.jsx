@@ -1,7 +1,7 @@
 import React from 'react';
 import { InputGeral, ErrorInput } from './FormStyles';
 
-const InputPadrão = ({
+const InputEditarLivro = ({
     type,
     name,
     placeholder,
@@ -28,4 +28,4 @@ const InputPadrão = ({
     );
 };
 
-export default InputPadrão;
+export default InputEditarLivro;

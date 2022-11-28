@@ -1,57 +1,71 @@
 import React from 'react';
-import TextArea from '../../Components/Forms/TextArea';
-import { InputGeral } from '../../Components/Forms/FormStyles';
+
 import useForm from '../../Hooks/useForm';
 import useFetch from '../../Hooks/useFetch';
 import { BOOKS_POST, EDIT_LIVRO_POST } from '../../Services/api';
 import { converterEmBase64 } from '../../Services/api';
 import { v4 as uuidv4 } from 'uuid';
-import { EditarContainer, EditarLivro, InputContainer } from './EditarStyles';
+import {
+    EditarContainer,
+    EditarLivro,
+    EditTextArea,
+    ImgCapa,
+    InputContainer,
+} from './EditarStyles';
 import { useNavigate } from 'react-router-dom';
 import EditarBotoes from './EditarBotoes';
-import EditarImagem from './EditarImagem';
-import LinkVoltar from '../../Components/LinkVoltar/LinkVoltar';
 
-const EditarDados = ({ livroSelecionado }) => {
+import LinkVoltar from '../../Components/LinkVoltar/LinkVoltar';
+import Adicionar from '../../Assets/adicionar.svg';
+import { InputGeral } from '../../Components/Forms/FormStyles';
+
+const EditarDados = () => {
     const navigate = useNavigate();
-    const titulo = useForm();
-    const autor = useForm();
-    const genero = useForm();
-    const sinopse = useForm();
-    const dataEntrada = useForm();
-    const [img, setImg] = React.useState('');
     const { request } = useFetch();
+    const [img, setImg] = React.useState('');
+    const [titulo, setTitulo] = React.useState('');
+    const [autor, setAutor] = React.useState('');
+    const [genero, setGenero] = React.useState('');
+    const [sinopse, setSinopse] = React.useState('');
+    const [dataEntrada, setDataEntrada] = React.useState('');
+    const [livroSelecionado, setLivroSelecionado] = React.useState(() => {
+        const livroAtual = localStorage.getItem(
+            '@livroSelecionado:livroSelecionado'
+        );
+        return livroAtual ? JSON.parse(livroAtual) : {};
+    });
 
     function formatarData(dataAtual) {
-        let formatarData = dataAtual.value;
+        let formatarData = dataAtual;
         return formatarData.split('-').reverse().join('/');
     }
 
-    console.log(livroSelecionado);
-
     function handleSubmit(event) {
         event.preventDefault();
-        if (!img) return alert('Escolha uma imagem');
+        if (!img) alert('Usar a mesma imagem?');
 
         const editarLivro = {
             id: uuidv4(),
-            tittle: titulo.value,
-            author: autor.value,
-            genre: genero.value,
+            tittle: titulo ? titulo : livroSelecionado.tittle,
+            author: autor ? autor : livroSelecionado.author,
+            genre: genero ? genero : livroSelecionado.genero,
             status: {
                 isActive: true,
                 description: '',
             },
-            image: img,
-            systemEntryDate: formatarData(dataEntrada),
-            synopsis: sinopse.value,
+            image: img ? img : livroSelecionado.image,
+            systemEntryDate: dataEntrada
+                ? formatarData(dataEntrada)
+                : livroSelecionado.systemEntryDate,
+            synopsis: sinopse ? sinopse : livroSelecionado.synopsis,
             rentHistory: [],
         };
 
         const { url, options } = EDIT_LIVRO_POST(livroSelecionado, editarLivro);
         request(url, options);
 
-        alert('Livro cadastrado com sucesso');
+        navigate('/biblioteca');
+        alert('Livro Editado com sucesso');
     }
 
     async function handleImgChange({ target }) {
@@ -64,14 +78,36 @@ const EditarDados = ({ livroSelecionado }) => {
         <EditarContainer>
             <LinkVoltar pagina="Editar livro" />
             <EditarLivro onSubmit={handleSubmit}>
-                <EditarImagem
-                    alt={titulo.value}
-                    src={img}
-                    type="file"
-                    name="image"
-                    id="image"
-                    onChange={handleImgChange}
-                />
+                <div>
+                    <ImgCapa tabIndex="0">
+                        {img ? (
+                            <img
+                                src={img}
+                                width={180}
+                                height={206}
+                                className="escolher-imagem"
+                            />
+                        ) : (
+                            <span>
+                                {' '}
+                                <img
+                                    src={livroSelecionado.image}
+                                    width={180}
+                                    height={206}
+                                />
+                            </span>
+                        )}
+
+                        <input
+                            accept="/image/*"
+                            type="file"
+                            name="image"
+                            id="image"
+                            onChange={handleImgChange}
+                            hidden
+                        />
+                    </ImgCapa>
+                </div>
                 <div>
                     <InputContainer>
                         <div style={{ maxWidth: '350px' }}>
@@ -80,13 +116,20 @@ const EditarDados = ({ livroSelecionado }) => {
                                 className="titulo"
                                 type="text"
                                 placeholder="Título"
-                                {...titulo}
+                                defaultValue={livroSelecionado.tittle}
+                                onChange={(event) =>
+                                    setTitulo(event.target.value)
+                                }
                             />
-                            <TextArea
+
+                            <EditTextArea
                                 required
                                 className="sinopse"
                                 placeholder="Sinopse"
-                                {...sinopse}
+                                defaultValue={livroSelecionado.synopsis}
+                                onChange={(event) =>
+                                    setSinopse(event.target.value)
+                                }
                             />
                         </div>
                         <div style={{ maxWidth: '350px' }}>
@@ -95,20 +138,29 @@ const EditarDados = ({ livroSelecionado }) => {
                                 className="autor"
                                 type="text"
                                 placeholder="Autor"
-                                {...autor}
+                                defaultValue={livroSelecionado.author}
+                                onChange={(event) =>
+                                    setAutor(event.target.value)
+                                }
                             />
                             <InputGeral
                                 required
                                 className="genero"
                                 type="text"
                                 placeholder="Gênero"
-                                {...genero}
+                                defaultValue={livroSelecionado.genre}
+                                onChange={(event) =>
+                                    setGenero(event.target.value)
+                                }
                             />
                             <InputGeral
                                 required
                                 className="dataEntrada"
                                 type="date"
-                                {...dataEntrada}
+                                defaultValue={livroSelecionado.systemEntryDate}
+                                onChange={(event) =>
+                                    setDataEntrada(event.target.value)
+                                }
                             />
                         </div>
                     </InputContainer>

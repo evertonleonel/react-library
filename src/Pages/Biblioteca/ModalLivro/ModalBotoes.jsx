@@ -11,10 +11,11 @@ const ModalBotoes = ({
     livroSelecionado,
 }) => {
     const [ativo, setAtivo] = React.useState('');
+    const navigate = useNavigate();
+
     React.useEffect(() => {
         setAtivo(statusLivro);
     }, [statusLivro]);
-    const navigate = useNavigate();
 
     return (
         <BotoesModal>
@@ -24,9 +25,12 @@ const ModalBotoes = ({
                 cor={'#fff'}
                 width={'9rem'}
                 onClick={() => {
+                    localStorage.setItem(
+                        '@livroSelecionado:livroSelecionado',
+                        JSON.stringify(livroSelecionado)
+                    );
                     navigate('/editar');
                 }}
-                livroSelecionado={livroSelecionado}
             >
                 Editar
             </Button>

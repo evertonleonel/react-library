@@ -5,13 +5,16 @@ import useForm from '../../Hooks/useForm';
 import useFetch from '../../Hooks/useFetch';
 import { BOOKS_POST } from '../../Services/api';
 import { CadastroContainer, InputContainer, NovoLivro } from './CadastroStyles';
-import CadastroImagem from './CadastroImagem';
 import CadastroBotoes from './CadastroBotoes';
 import { converterEmBase64 } from '../../Services/api';
 import { v4 as uuidv4 } from 'uuid';
 import LinkVoltar from '../../Components/LinkVoltar/LinkVoltar';
+import { ImgCapa } from './CadastroStyles';
+import Adicionar from '../../Assets/adicionar.svg';
+import { useNavigate } from 'react-router-dom';
 
 const CadastroDados = () => {
+    const navigate = useNavigate();
     const titulo = useForm();
     const autor = useForm();
     const genero = useForm();
@@ -48,6 +51,7 @@ const CadastroDados = () => {
         request(url, options);
 
         alert('Livro cadastrado com sucesso');
+        navigate('/biblioteca');
     }
 
     async function handleImgChange({ target }) {
@@ -60,14 +64,34 @@ const CadastroDados = () => {
         <CadastroContainer>
             <LinkVoltar pagina="Cadastrar novo livro" />
             <NovoLivro onSubmit={handleSubmit}>
-                <CadastroImagem
-                    alt={titulo.value}
-                    src={img}
-                    type="file"
-                    name="image"
-                    id="image"
-                    onChange={handleImgChange}
-                />
+                <div>
+                    <ImgCapa tabIndex="0">
+                        {img ? (
+                            <img
+                                src={img}
+                                width={180}
+                                height={206}
+                                className="escolher-imagem"
+                            />
+                        ) : (
+                            <span>
+                                {' '}
+                                <img src={Adicionar} />
+                                Capa
+                            </span>
+                        )}
+
+                        <input
+                            accept="/image/*"
+                            type="file"
+                            name="image"
+                            id="image"
+                            onChange={handleImgChange}
+                            hidden
+                        />
+                    </ImgCapa>
+                </div>
+
                 <div>
                     <InputContainer>
                         <div style={{ maxWidth: '350px' }}>

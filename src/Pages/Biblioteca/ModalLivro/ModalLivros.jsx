@@ -200,6 +200,7 @@ const ModalLivros = ({ livroSelecionado, onClick }) => {
                                         abriModalHistoricoALuno
                                     }
                                     setModalLivro={setModalLivro}
+                                    livroSelecionado={livros}
                                 />
 
                                 <div className="BotaoFecharModal">

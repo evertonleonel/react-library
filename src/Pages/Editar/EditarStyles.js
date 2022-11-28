@@ -46,11 +46,10 @@ export const EditarLivro = styled.form`
     }
 `;
 
-export const ImgCapa = styled.div`
+export const ImgCapa = styled.label`
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
 
     width: 172px;
     height: 206px;
@@ -60,11 +59,15 @@ export const ImgCapa = styled.div`
 
     border: 2px dashed currentColor;
     cursor: pointer;
-    transition: background-color 300ms ease-in-out;
 
-    &::after {
-        content: '';
-        display: block;
+    span {
+        display: flex;
+        gap: 8px;
+    }
+
+    .escolher-imagem:hover {
+        outline: 2px solid #167ce2;
+        transition: outline 100ms ease-in-out;
     }
 `;
 
@@ -116,4 +119,24 @@ export const ImagemEscolhida = styled.img`
     object-fit: cover;
     border-radius: 2px;
     cursor: pointer;
+`;
+
+export const EditTextArea = styled.textarea`
+    width: 100%;
+    height: 129px;
+    resize: none;
+    padding: 16px;
+    background-color: #ffffff;
+    color: #133052;
+    text-align: left;
+    font-size: clamp(16px, 18px, 21px);
+    border-radius: 5px;
+    border: 1px solid #133052;
+    outline: none;
+    box-sizing: border-box;
+
+    &::placeholder {
+        color: #133052;
+        font-size: calc(14px, 16px, 19px);
+    }
 `;

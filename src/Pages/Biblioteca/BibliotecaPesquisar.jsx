@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import InputPadrão from '../../Components/Forms/InputPadrão';
 import Button from '../../Components/Forms/Button';
 import Lupa from '../../Assets/lupa.svg';
-import { ImagemIcone, DivBuscar } from './BibliotecaStyles';
+import { ImagemIcone, DivBuscar, PesquisaContainer } from './BibliotecaStyles';
 import BibliotecaFiltro from './BibliotecaFiltro';
 import { LivroContext } from '../../Hooks/LivroContext';
 
@@ -37,7 +37,7 @@ const BibliotecaPesquisar = () => {
     }
 
     return (
-        <div style={{ display: 'flex', flexWrap: 'wrap', margin: '0 auto' }}>
+        <PesquisaContainer>
             <DivBuscar>
                 <ImagemIcone src={Lupa} />
                 <InputPadrão
@@ -65,7 +65,7 @@ const BibliotecaPesquisar = () => {
             </DivBuscar>
 
             <BibliotecaFiltro onChange={filtroChange} />
-        </div>
+        </PesquisaContainer>
     );
 };
 

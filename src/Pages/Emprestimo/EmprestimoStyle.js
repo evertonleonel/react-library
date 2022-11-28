@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ContainerTabela = styled.div`
     margin: 90px auto;
-
+    overflow: auto;
     tbody {
         .filtro-livro {
             position: relative;
@@ -74,6 +74,10 @@ export const ContainerTabela = styled.div`
         color: #3e4756;
         font-size: 20px;
         margin-bottom: 29px;
+    }
+
+    @media (max-width: 500px) {
+        margin: 0 10px;
     }
 `;
 
