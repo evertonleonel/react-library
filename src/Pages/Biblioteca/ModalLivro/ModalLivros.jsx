@@ -80,6 +80,7 @@ const ModalLivros = ({ livroSelecionado, onClick }) => {
         json.status.isActive ? setStatusLivro(false) : setStatusLivro(true);
 
         if (json.rentHistory.length > 0) {
+            setEmprestou(true);
             let historico = json.rentHistory;
             setUltimoEmprestimo(historico[historico.length - 1]);
         }
@@ -130,7 +131,7 @@ const ModalLivros = ({ livroSelecionado, onClick }) => {
                         <ContainerPrincipal>
                             <ContainerEsquerdo>
                                 {livros && <ImagemLivro src={livros.image} />}
-                                {historicoLivro && devolvido ? (
+                                {historicoLivro && !devolvido ? (
                                     <Button
                                         onClick={devolverLivro}
                                         style={{
