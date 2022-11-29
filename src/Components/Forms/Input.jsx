@@ -10,11 +10,12 @@ const Input = ({
     error,
     onBlur,
     src,
+    label,
     ...props
 }) => {
     return (
         <InputLoginContainer>
-            <label htmlFor={name}>{name}</label>
+            <label htmlFor={name}>{label}</label>
             <LoginInput
                 {...props}
                 id={name}

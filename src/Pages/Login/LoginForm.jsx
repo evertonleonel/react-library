@@ -49,7 +49,6 @@ const LoginForm = () => {
             <form onSubmit={handleSubmit}>
                 <Input
                     src={cadeado}
-                    label="Email"
                     type="text"
                     name="email"
                     placeholder="E-mail"
@@ -57,7 +56,6 @@ const LoginForm = () => {
                 />
                 <Input
                     src={email}
-                    label="Senha"
                     type="password"
                     name="password"
                     placeholder="Senha"
