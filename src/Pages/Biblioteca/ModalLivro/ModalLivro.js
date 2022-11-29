@@ -39,6 +39,12 @@ export const ModalLivroContent = styled.div`
         height: 100%;
         flex-wrap: wrap;
     }
+
+    @media (max-width: 4rem) {
+        height: 100%;
+        flex-wrap: wrap;
+        width: 100%;
+    }
 `;
 
 export const ContainerEsquerdo = styled.div`

@@ -213,7 +213,7 @@ export const ContainerTextAreaModal = styled.div`
     }
 `;
 export const InputTextAreaModal = styled.textarea`
-    width: 353px;
+    width: 100%;
     height: 129px;
     resize: none;
     padding: 16px;
@@ -229,9 +229,5 @@ export const InputTextAreaModal = styled.textarea`
     &::placeholder {
         color: #133052;
         font-size: calc(14px, 16px, 19px);
-    }
-
-    @media (max-width: 470px) {
-        width: 100%;
     }
 `;
