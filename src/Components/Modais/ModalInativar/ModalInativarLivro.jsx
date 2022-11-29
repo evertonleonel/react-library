@@ -5,7 +5,7 @@ import ModalBotaoFechar from '../ModalBotaoFechar';
 import Button from '../../Forms/Button';
 import useFetch from '../../../Hooks/useFetch';
 import useForm from '../../../Hooks/useForm';
-import TextArea from '../../Forms/TextArea';
+import TextAreaModal from '../../Forms/TextAreaModal';
 import { STATUS_POST } from '../../../Services/api';
 
 const ModalInativarLivro = ({
@@ -48,9 +48,13 @@ const ModalInativarLivro = ({
             <InativarLivro>
                 <h2>Inativar Livro</h2>
                 <form>
-                    <div>
-                        <TextArea placeholder="Descrição" {...descricao} />
-                    </div>
+                    <TextAreaModal
+                        label={'Descrição'}
+                        name={descricao}
+                        required
+                        {...descricao}
+                    />
+
                     <Button
                         onClick={handleSubmit}
                         style={{

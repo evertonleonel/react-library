@@ -14,6 +14,7 @@ import Adicionar from '../../Assets/adicionar.svg';
 import { useNavigate } from 'react-router-dom';
 import Options from '../../Components/Filtro/Options';
 import { SelectionFiltro } from '../Cadastro/CadastroStyles';
+import InputPadrao from '../../Components/Forms/InputPadrão';
 
 const CadastroDados = () => {
     const navigate = useNavigate();
@@ -102,27 +103,30 @@ const CadastroDados = () => {
                 <div>
                     <InputContainer>
                         <div style={{ maxWidth: '350px' }}>
-                            <InputGeral
+                            <InputPadrao
                                 required
+                                label={'Título'}
+                                name={titulo}
                                 className="titulo"
                                 type="text"
-                                placeholder="Título"
                                 {...titulo}
                             />
 
                             <TextArea
+                                label={'Sinopse'}
+                                name={sinopse}
                                 required
                                 className="sinopse"
-                                placeholder="Sinopse"
                                 {...sinopse}
                             />
                         </div>
                         <div style={{ maxWidth: '350px' }}>
-                            <InputGeral
+                            <InputPadrao
                                 required
+                                label={'Autor'}
+                                name={autor}
                                 className="autor"
                                 type="text"
-                                placeholder="Autor"
                                 {...autor}
                             />
                             <SelectionFiltro

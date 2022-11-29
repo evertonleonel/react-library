@@ -14,7 +14,7 @@ const Input = ({
 }) => {
     return (
         <InputLoginContainer>
-            <label htmlFor={name}></label>
+            <label htmlFor={name}>{name}</label>
             <LoginInput
                 {...props}
                 id={name}

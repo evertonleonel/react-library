@@ -5,7 +5,6 @@ export const InativarLivro = styled.div`
     padding: 40px;
     height: 336px;
     width: 804px;
-    position: relative;
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);

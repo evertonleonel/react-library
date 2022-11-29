@@ -1,7 +1,7 @@
 import React from 'react';
-import { ContainerTextArea, InputTextArea } from './FormStyles';
+import { ContainerTextAreaModal, InputTextAreaModal } from './FormStyles';
 
-const TextArea = ({
+const TextAreaModal = ({
     type,
     placeholder,
     value,
@@ -12,8 +12,8 @@ const TextArea = ({
     ...props
 }) => {
     return (
-        <ContainerTextArea>
-            <InputTextArea
+        <ContainerTextAreaModal>
+            <InputTextAreaModal
                 className="textArea"
                 {...props}
                 type={type}
@@ -23,8 +23,8 @@ const TextArea = ({
                 onBlur={onBlur}
             />
             <label htmlFor={name}>{label}</label>
-        </ContainerTextArea>
+        </ContainerTextAreaModal>
     );
 };
 
-export default TextArea;
+export default TextAreaModal;

@@ -20,6 +20,8 @@ import LinkVoltar from '../../Components/LinkVoltar/LinkVoltar';
 import Adicionar from '../../Assets/adicionar.svg';
 import { InputGeral } from '../../Components/Forms/FormStyles';
 import Options from '../../Components/Filtro/Options';
+import InputPadrao from '../../Components/Forms/InputPadrão';
+import TextArea from '../../Components/Forms/TextArea';
 
 const EditarDados = () => {
     const navigate = useNavigate();
@@ -125,21 +127,23 @@ const EditarDados = () => {
                 <div>
                     <InputContainer>
                         <div style={{ maxWidth: '350px' }}>
-                            <InputGeral
+                            <InputPadrao
                                 required
+                                label={'Título'}
+                                name={titulo}
                                 className="titulo"
                                 type="text"
-                                placeholder="Título"
                                 defaultValue={livroSelecionado.tittle}
                                 onChange={(event) =>
                                     setTitulo(event.target.value)
                                 }
                             />
 
-                            <EditTextArea
+                            <TextArea
                                 required
+                                label={'Sinopse'}
+                                name={sinopse}
                                 className="sinopse"
-                                placeholder="Sinopse"
                                 defaultValue={livroSelecionado.synopsis}
                                 onChange={(event) =>
                                     setSinopse(event.target.value)
@@ -147,11 +151,12 @@ const EditarDados = () => {
                             />
                         </div>
                         <div style={{ maxWidth: '350px' }}>
-                            <InputGeral
+                            <InputPadrao
                                 required
+                                label={'Autor'}
+                                name={autor}
                                 className="autor"
                                 type="text"
-                                placeholder="Autor"
                                 defaultValue={livroSelecionado.author}
                                 onChange={(event) =>
                                     setAutor(event.target.value)

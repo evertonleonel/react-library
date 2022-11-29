@@ -5,6 +5,7 @@ import Lupa from '../../Assets/lupa.svg';
 import { ImagemIcone, DivBuscar, PesquisaContainer } from './BibliotecaStyles';
 import BibliotecaFiltro from './BibliotecaFiltro';
 import { LivroContext } from '../../Hooks/LivroContext';
+import { InputGeral } from '../../Components/Forms/FormStyles';
 
 const BibliotecaPesquisar = () => {
     const [inputPesquisar, setInputPesquisar] = React.useState('');
@@ -40,7 +41,7 @@ const BibliotecaPesquisar = () => {
         <PesquisaContainer>
             <DivBuscar>
                 <ImagemIcone src={Lupa} />
-                <InputPadrão
+                <InputGeral
                     style={{
                         paddingLeft: '49px',
                         outline: '0',

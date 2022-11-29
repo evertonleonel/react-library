@@ -86,7 +86,7 @@ export const ErrorInput = styled.p`
 
 export const InputGeral = styled.input`
     width: 100%;
-    /* max-width: 350px; */
+    /* width: 350px; */
     max-height: 53px;
     padding: 16px;
     background-color: #ffffff;
@@ -101,10 +101,14 @@ export const InputGeral = styled.input`
         color: #133052;
         font-size: calc(14px, 16px, 19px);
     }
+
+    @media (max-width: 470px) {
+        width: 100%;
+    }
 `;
 
 export const InputTextArea = styled.textarea`
-    width: 100%;
+    width: 353px;
     height: 129px;
     resize: none;
     padding: 16px;
@@ -120,5 +124,114 @@ export const InputTextArea = styled.textarea`
     &::placeholder {
         color: #133052;
         font-size: calc(14px, 16px, 19px);
+    }
+
+    @media (max-width: 470px) {
+        width: 100%;
+    }
+`;
+export const ContainerTextArea = styled.div`
+    position: relative;
+
+    label {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 16px;
+        left: 16px;
+        width: 57px;
+        height: 21px;
+        color: #133052;
+        font-size: 1.6rem;
+        cursor: text;
+        transition: 0.3s ease-in-out;
+    }
+
+    textarea:focus + label,
+    textarea:valid + label {
+        font-size: 13px;
+        top: -14px;
+        left: 8px;
+        background-color: #fff;
+        pointer-events: none;
+    }
+`;
+
+export const ContaierInputPadrao = styled.div`
+    position: relative;
+
+    label {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 12%;
+        left: 16px;
+        color: #133052;
+        font-size: 1.6rem;
+        cursor: text;
+        transition: 0.3s ease-in-out;
+        padding: 0;
+    }
+
+    input:focus + label,
+    input:valid + label {
+        font-size: 13px;
+        top: -14px;
+        left: 8px;
+        background-color: #fff;
+        pointer-events: none;
+    }
+`;
+
+export const ContainerTextAreaModal = styled.div`
+    position: relative;
+
+    label {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 45px;
+        left: 25px;
+        width: 57px;
+        height: 21px;
+        color: #133052;
+        font-size: 1.6rem;
+        cursor: text;
+        transition: 0.3s ease-in-out;
+    }
+
+    textarea:focus + label,
+    textarea:valid + label {
+        font-size: 13px;
+        top: 12px;
+        left: 16px;
+        background-color: #fff;
+        pointer-events: none;
+    }
+`;
+export const InputTextAreaModal = styled.textarea`
+    width: 353px;
+    height: 129px;
+    resize: none;
+    padding: 16px;
+    background-color: #ffffff;
+    color: #133052;
+    text-align: left;
+    font-size: clamp(16px, 18px, 21px);
+    border-radius: 5px;
+    border: 1px solid #133052;
+    outline: none;
+    box-sizing: border-box;
+
+    &::placeholder {
+        color: #133052;
+        font-size: calc(14px, 16px, 19px);
+    }
+
+    @media (max-width: 470px) {
+        width: 100%;
     }
 `;

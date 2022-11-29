@@ -1,7 +1,7 @@
 import React from 'react';
-import { InputGeral, ErrorInput } from './FormStyles';
+import { InputGeral, ErrorInput, ContaierInputPadrao } from './FormStyles';
 
-const InputEditarLivro = ({
+const InputPadrao = ({
     label,
     type,
     name,
@@ -13,7 +13,7 @@ const InputEditarLivro = ({
     ...props
 }) => {
     return (
-        <>
+        <ContaierInputPadrao>
             <InputGeral
                 {...props}
                 id={name}
@@ -24,9 +24,9 @@ const InputEditarLivro = ({
                 value={value}
                 onBlur={onBlur}
             />
-            {error && <ErrorInput>{error}</ErrorInput>}
-        </>
+            <label htmlFor={name}>{label}</label>
+        </ContaierInputPadrao>
     );
 };
 
-export default InputEditarLivro;
+export default InputPadrao;

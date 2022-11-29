@@ -48,6 +48,7 @@ export const SelectionFiltro = styled.select`
     border: 1px solid #adb5bd;
     border-radius: 5px;
     padding: 16px;
+    font-size: 16px;
 `;
 export const DivGaleria = styled.div`
     display: flex;
