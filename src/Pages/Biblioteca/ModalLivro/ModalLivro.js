@@ -37,6 +37,7 @@ export const ModalLivroContent = styled.div`
 
     @media (max-width: 9rem) {
         height: 100%;
+        flex-wrap: wrap;
     }
 `;
 
@@ -51,6 +52,10 @@ export const ContainerDireito = styled.div`
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
+
+    @media (max-width: 400px) {
+        margin: 0 10px;
+    }
 
     h2,
     h3,
@@ -101,10 +106,13 @@ export const ContainerPrincipal = styled.div`
     gap: 40px;
     padding: 70px 40px 40px;
     position: relative;
+    overflow: auto;
 
     @media (max-width: 900px) {
         display: flex;
-        flex-shrink: 1;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         padding: 35px 20px 20px;
         gap: 20px;
         width: 55rem;
@@ -112,12 +120,25 @@ export const ContainerPrincipal = styled.div`
 
     @media (max-width: 620px) {
         display: flex;
-        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         gap: 20px;
         margin-top: 30px;
-        padding: 10px;
+        padding: 20px;
         width: 100%;
     }
+
+    @media (max-width: 400px) {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        width: 100%;
+    }
+`;
+
+export const ContainerSecundario = styled.div`
+    overflow: auto;
 `;
 export const BotoesModal = styled.div`
     display: flex;
@@ -127,14 +148,17 @@ export const BotoesModal = styled.div`
     @media (max-width: 900px) {
         gap: 10px;
     }
+
+    @media (max-width: 400px) {
+        flex-direction: column;
+        align-items: center;
+    }
 `;
 
 export const ModalExtraDados = styled.div`
     height: 100%;
     margin: 0 40px;
     margin-bottom: 40px;
-    overflow: auto;
-    overflow-x: hidden;
 
     h2 {
         color: #3e4756;
@@ -149,6 +173,11 @@ export const ModalExtraDados = styled.div`
         margin-bottom: 16px;
         background-color: #f4f4f4;
         color: #3e4756;
+
+        @media (max-width: 90rem) {
+            width: 100%;
+            overflow: auto;
+        }
 
         thead {
             th {

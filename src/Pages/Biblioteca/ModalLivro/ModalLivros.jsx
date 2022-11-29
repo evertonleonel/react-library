@@ -4,6 +4,7 @@ import {
     ContainerDireito,
     ContainerEsquerdo,
     ContainerPrincipal,
+    ContainerSecundario,
     ImagemLivro,
     Modal,
     ModalLivroContent,
@@ -202,15 +203,19 @@ const ModalLivros = ({ livroSelecionado, onClick }) => {
                                 </div>
                             </ContainerDireito>
                         </ContainerPrincipal>
-                        {devolvido && ultimoEmprestimo && (
-                            <ModalExtra ultimoEmprestimo={ultimoEmprestimo} />
-                        )}
+                        <ContainerSecundario>
+                            {devolvido && ultimoEmprestimo && (
+                                <ModalExtra
+                                    ultimoEmprestimo={ultimoEmprestimo}
+                                />
+                            )}
 
-                        {ultimaInativacao && (
-                            <ModalExtraInativar
-                                ultimaInativacao={ultimaInativacao}
-                            />
-                        )}
+                            {ultimaInativacao && (
+                                <ModalExtraInativar
+                                    ultimaInativacao={ultimaInativacao}
+                                />
+                            )}
+                        </ContainerSecundario>
                     </ModalLivroContent>
                 </Modal>
             )}
