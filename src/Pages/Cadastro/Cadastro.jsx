@@ -1,12 +1,15 @@
 import React from 'react';
-import { ContainerMain } from '../../Components/GlobalStyles/styles';
 import Header from '../../Components/Header/Header';
-import LinkVoltar from '../../Components/LinkVoltar/LinkVoltar';
+import Head from '../../Components/Helper/Head';
 import CadastroDados from './CadastroDados';
 
 const Cadastro = () => {
     return (
         <>
+            <Head
+                title="Cadastrar Livro"
+                description="Página para Cadastrar um novo livro"
+            />
             <Header />
             <CadastroDados />
         </>

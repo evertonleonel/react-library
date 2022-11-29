@@ -1,14 +1,18 @@
 import React from 'react';
+import Head from '../../Components/Helper/Head';
 import LoginForm from './LoginForm';
 import { LoginContent, LoginContainer } from './LoginStyles';
 
 const Login = () => {
     return (
-        <LoginContent>
-            <LoginContainer>
-                <LoginForm />
-            </LoginContainer>
-        </LoginContent>
+        <>
+            <Head title="Login" description="Página de Login" />
+            <LoginContent>
+                <LoginContainer>
+                    <LoginForm />
+                </LoginContainer>
+            </LoginContent>
+        </>
     );
 };
 

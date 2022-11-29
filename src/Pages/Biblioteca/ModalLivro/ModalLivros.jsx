@@ -16,7 +16,7 @@ import FecharModal from '../../../Assets/x-fechar.png';
 import ModalExtra from './ModalExtra';
 import ModalExtraInativar from './ModalExtraInativar';
 import ModalEmprestarLivro from '../../../Components/Modais/ModalEmprestar/ModalEmprestarLivro';
-import { RENT_POST, STATUS_POST } from '../../../Services/api';
+import { STATUS_POST } from '../../../Services/api';
 import useFetch from '../../../Hooks/useFetch';
 import ModalInativarLivro from '../../../Components/Modais/ModalInativar/ModalInativarLivro';
 import ModalHistoricoAluno from '../../../Components/Modais/ModalHistorico/ModalHistoricoALuno';

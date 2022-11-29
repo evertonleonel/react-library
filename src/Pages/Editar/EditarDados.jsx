@@ -15,7 +15,6 @@ import {
 } from './EditarStyles';
 import { useNavigate } from 'react-router-dom';
 import EditarBotoes from './EditarBotoes';
-
 import LinkVoltar from '../../Components/LinkVoltar/LinkVoltar';
 import Adicionar from '../../Assets/adicionar.svg';
 import { InputGeral } from '../../Components/Forms/FormStyles';

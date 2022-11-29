@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import InputPadrão from '../../Components/Forms/InputPadrão';
+import React from 'react';
 import Button from '../../Components/Forms/Button';
 import Lupa from '../../Assets/lupa.svg';
 import { ImagemIcone, DivBuscar, PesquisaContainer } from './BibliotecaStyles';
