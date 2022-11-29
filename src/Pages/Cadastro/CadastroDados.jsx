@@ -109,6 +109,7 @@ const CadastroDados = () => {
                                 placeholder="Título"
                                 {...titulo}
                             />
+
                             <TextArea
                                 required
                                 className="sinopse"

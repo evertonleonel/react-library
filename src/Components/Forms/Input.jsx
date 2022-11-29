@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoginInput, ErrorInput } from './FormStyles';
+import { LoginInput, ErrorInput, InputLoginContainer } from './FormStyles';
 
 const Input = ({
     type,
@@ -9,10 +9,11 @@ const Input = ({
     onChange,
     error,
     onBlur,
+    src,
     ...props
 }) => {
     return (
-        <div>
+        <InputLoginContainer>
             <label htmlFor={name}></label>
             <LoginInput
                 {...props}
@@ -24,8 +25,11 @@ const Input = ({
                 value={value}
                 onBlur={onBlur}
             />
+            <span>
+                <img src={src} />
+            </span>
             {error && <ErrorInput>{error}</ErrorInput>}
-        </div>
+        </InputLoginContainer>
     );
 };
 

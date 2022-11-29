@@ -10,6 +10,10 @@ export const InativarLivro = styled.div`
     left: 50%;
     transform: translate(-50%, 0);
 
+    @media (max-width: 9rem) {
+        padding: 2rem calc(2rem + 15px) 2rem 2rem;
+    }
+
     h2 {
         font-size: 20px;
         color: #3e4756;

@@ -12,6 +12,7 @@ export const EmprestarLivro = styled.div`
     position: absolute;
     transform: translate(-50%, 0);
     color: #3e4756;
+
     form {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -20,12 +21,24 @@ export const EmprestarLivro = styled.div`
         margin-top: 21px;
         margin-bottom: 40px;
 
+        @media (max-width: 90rem) {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
         input {
             width: 350px;
             border: 1px solid #133052;
             height: 53px;
             border-radius: 5px;
             padding: 16px;
+
+            @media (max-width: 90rem) {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
         }
         input:focus {
             border: 1px solid #ffc501;

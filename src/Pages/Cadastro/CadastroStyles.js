@@ -82,6 +82,12 @@ export const NovoLivro = styled.form`
 export const InputContainer = styled.div`
     display: flex;
     gap: 24px;
+    position: relative;
+
+    label {
+        position: absolute;
+        top: 0;
+    }
 
     .titulo {
         margin-bottom: 24px;

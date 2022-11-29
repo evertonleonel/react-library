@@ -56,12 +56,31 @@ export const LoginInput = styled.input`
         color: #868e96;
         font-size: calc(14px, 16px, 19px);
     }
+
+    span {
+        position: absolute;
+        top: 0;
+    }
+
+    @media (max-width: 398px) {
+        width: 100%;
+    }
+`;
+
+export const InputLoginContainer = styled.div`
+    position: relative;
+
+    span {
+        position: absolute;
+        top: 25%;
+        left: 90%;
+    }
 `;
 
 export const ErrorInput = styled.p`
     font-size: 1.5rem;
     color: #fb1;
-    margin-bottom: 5px;
+    margin-bottom: 3px;
     margin-left: 10px;
 `;
 

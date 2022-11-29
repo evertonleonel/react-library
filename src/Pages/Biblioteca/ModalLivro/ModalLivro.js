@@ -11,6 +11,10 @@ export const Modal = styled.div`
     z-index: 100;
     padding: 2rem calc(4rem + 15px) 2rem 4rem;
     overflow-y: auto;
+
+    @media (max-width: 9rem) {
+        padding: 2rem calc(2rem + 15px) 2rem 2rem;
+    }
 `;
 
 export const ImagemLivro = styled.img`
@@ -30,6 +34,10 @@ export const ModalLivroContent = styled.div`
     left: 50%;
     transform: translate(-50%, 0);
     max-height: 825px;
+
+    @media (max-width: 9rem) {
+        height: 100%;
+    }
 `;
 
 export const ContainerEsquerdo = styled.div`
@@ -93,11 +101,32 @@ export const ContainerPrincipal = styled.div`
     gap: 40px;
     padding: 70px 40px 40px;
     position: relative;
+
+    @media (max-width: 900px) {
+        display: flex;
+        flex-shrink: 1;
+        padding: 35px 20px 20px;
+        gap: 20px;
+        width: 55rem;
+    }
+
+    @media (max-width: 620px) {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 30px;
+        padding: 10px;
+        width: 100%;
+    }
 `;
 export const BotoesModal = styled.div`
     display: flex;
     gap: 24px;
     justify-content: center;
+
+    @media (max-width: 900px) {
+        gap: 10px;
+    }
 `;
 
 export const ModalExtraDados = styled.div`

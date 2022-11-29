@@ -1,8 +1,6 @@
 import React from 'react';
 import FiltroLivro from '../../Assets/filtroEmprestimo.svg';
-import { InputGeral } from '../../Components/Forms/FormStyles';
 import useFetch from '../../Hooks/useFetch';
-import useForm from '../../Hooks/useForm';
 import { GET_BOOKS } from '../../Services/api';
 import { ContainerTabela, TabelaContent } from './EmprestimoStyle';
 
@@ -140,7 +138,7 @@ const EmprestimoHistorico = () => {
                                         setBuscarNome(event.target.value)
                                     }
                                 />
-                                {/* <InputGeral type="text" {...aluno} /> */}
+
                                 <img src={FiltroLivro} alt="icone filtro" />
                             </td>
                             <td className="filtro-livro">

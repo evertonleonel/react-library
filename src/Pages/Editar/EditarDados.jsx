@@ -65,7 +65,9 @@ const EditarDados = () => {
                 ? formatarData(dataEntrada)
                 : formatarData(livroSelecionado.systemEntryDate),
             synopsis: sinopse ? sinopse : livroSelecionado.synopsis,
-            rentHistory: [],
+            rentHistory: livroSelecionado.rentHistory
+                ? livroSelecionado.rentHistory
+                : [],
         };
 
         const { url, options } = EDIT_LIVRO_POST(livroSelecionado, editarLivro);

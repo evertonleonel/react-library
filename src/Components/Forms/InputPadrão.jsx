@@ -2,6 +2,7 @@ import React from 'react';
 import { InputGeral, ErrorInput } from './FormStyles';
 
 const InputEditarLivro = ({
+    label,
     type,
     name,
     placeholder,

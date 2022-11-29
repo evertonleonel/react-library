@@ -7,6 +7,8 @@ import Logo from '../../Assets/logo.svg';
 import useForm from '../../Hooks/useForm';
 import { GET_LOGS } from '../../Services/api';
 import { useNavigate } from 'react-router-dom';
+import email from '../../Assets/email.svg';
+import cadeado from '../../Assets/cadeado.svg';
 
 const LoginForm = () => {
     const username = useForm();
@@ -46,6 +48,7 @@ const LoginForm = () => {
             <LoginLogo src={Logo} />
             <form onSubmit={handleSubmit}>
                 <Input
+                    src={cadeado}
                     label="Email"
                     type="text"
                     name="email"
@@ -53,6 +56,7 @@ const LoginForm = () => {
                     {...username}
                 />
                 <Input
+                    src={email}
                     label="Senha"
                     type="password"
                     name="password"
