@@ -29,7 +29,7 @@ export const LoginButton = styled.button`
     &:hover:before,
     &:focus:before {
         background: rgba(0, 0, 0, 0.2);
-        box-shadow: 0 0 10px #ffc501;
+        box-shadow: 0 0 1px #ccc;
     }
 
     &:disabled {

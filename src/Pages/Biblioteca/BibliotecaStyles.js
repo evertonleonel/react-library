@@ -79,7 +79,7 @@ export const LivroDiv = styled.div`
     &:hover {
         transform: scale3d(1.1, 1.1, 1);
         transition: box-shadow 300ms ease-in-out;
-        box-shadow: 0px 0px 10px rgba(0, 0, 100, 0.5);
+        box-shadow: 0px 0px 1px rgba(0, 0, 50, 1);
     }
 
     img {
