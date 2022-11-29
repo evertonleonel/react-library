@@ -6,7 +6,6 @@ export const EditarContainer = styled.section`
     height: calc(100vh - 144px);
     display: flex;
     position: relative;
-
     @media (max-width: 1030px) {
         height: 100%;
     }
@@ -15,7 +14,6 @@ export const EditarContainer = styled.section`
 export const EditarLivro = styled.form`
     display: flex;
     justify-content: center;
-
     gap: 48px;
     margin: 167px auto;
 

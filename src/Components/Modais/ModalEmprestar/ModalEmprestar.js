@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { animationModal } from '../../GlobalStyles/styles';
 
 export const EmprestarLivro = styled.div`
     width: 805px;
@@ -12,6 +13,7 @@ export const EmprestarLivro = styled.div`
     position: absolute;
     transform: translate(-50%, 0);
     color: #3e4756;
+    animation: ${animationModal} 0.3s forwards;
 
     form {
         display: grid;

@@ -92,7 +92,7 @@ export const InputGeral = styled.input`
     background-color: #ffffff;
     color: #133052;
     text-align: left;
-    font-size: clamp(16px, 18px, 21px);
+    font-size: 16px;
     border-radius: 5px;
     border: ${(props) => props.border || '1px solid #133052'};
     outline: none;
@@ -120,6 +120,7 @@ export const InputTextArea = styled.textarea`
     border: 1px solid #133052;
     outline: none;
     box-sizing: border-box;
+    font-size: 16px;
 
     &::placeholder {
         color: #133052;
@@ -225,6 +226,7 @@ export const InputTextAreaModal = styled.textarea`
     border: 1px solid #133052;
     outline: none;
     box-sizing: border-box;
+    font-size: 16px;
 
     &::placeholder {
         color: #133052;

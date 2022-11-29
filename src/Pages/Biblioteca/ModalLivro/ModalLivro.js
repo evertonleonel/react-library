@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { animationModal } from '../../../Components/GlobalStyles/styles';
 
 export const Modal = styled.div`
     position: fixed;
@@ -34,6 +35,7 @@ export const ModalLivroContent = styled.div`
     left: 50%;
     transform: translate(-50%, 0);
     max-height: 825px;
+    animation: ${animationModal} 0.3s forwards;
 
     @media (max-width: 9rem) {
         height: 100%;

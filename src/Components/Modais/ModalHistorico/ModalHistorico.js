@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { animationModal } from '../../../Components/GlobalStyles/styles';
 
 export const HistoricoLivro = styled.div`
     width: 90%;
@@ -8,6 +9,7 @@ export const HistoricoLivro = styled.div`
     left: 50%;
     transform: translate(-50%, 0);
     position: absolute;
+    animation: ${animationModal} 0.3s forwards;
 
     .BotaoFecharModal {
         display: flex;

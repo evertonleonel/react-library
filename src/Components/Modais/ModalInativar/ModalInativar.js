@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { animationModal } from '../../GlobalStyles/styles';
 
 export const InativarLivro = styled.div`
     background-color: #fff;
@@ -9,6 +10,7 @@ export const InativarLivro = styled.div`
     position: absolute;
     left: 50%;
     transform: translate(-50%, 0);
+    animation: ${animationModal} 0.3s forwards;
 
     @media (max-width: 90rem) {
         padding: 2rem calc(2rem + 15px) 2rem 2rem;
