@@ -1,9 +1,9 @@
 import React from 'react';
-import { ContainerMain } from '../../Components/GlobalStyles/styles';
 import Header from '../../Components/Header/Header';
 import Head from '../../Components/Helper/Head';
 import LinkVoltar from '../../Components/LinkVoltar/LinkVoltar';
 import BibliotecaGaleria from './BibliotecaGaleria';
+import { ContainerBiblioteca } from './BibliotecaStyles';
 
 const Biblioteca = () => {
     return (
@@ -13,10 +13,10 @@ const Biblioteca = () => {
                 description="Página com todos os livros da Biblioteca"
             />
             <Header />
-            <ContainerMain>
+            <ContainerBiblioteca>
                 <LinkVoltar pagina="Biblioteca" />
                 <BibliotecaGaleria />
-            </ContainerMain>
+            </ContainerBiblioteca>
         </>
     );
 };

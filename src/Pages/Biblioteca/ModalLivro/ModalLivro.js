@@ -233,6 +233,12 @@ export const ModalInativar = styled.div`
     margin: 0 40px;
     margin-bottom: 40px;
 
+    p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
     h2 {
         color: #3e4756;
         font: normal normal medium 20px/26px Roboto;

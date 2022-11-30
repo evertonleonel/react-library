@@ -19,14 +19,27 @@ export const DivBuscar = styled.div`
         border-color: #ffc501;
         transition: 0.5s;
     }
+
+    @media (max-width: 1025px) {
+        max-width: 666px;
+        width: 100%;
+        margin: 0 auto;
+    }
 `;
 
 export const PesquisaContainer = styled.div`
     display: flex;
-    flex-wrap: wrap;
     margin: 0 auto;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
 
-    @media (max-width: 960px) {
+    @media (max-width: 1030px) {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    /* @media (max-width: 960px) {
         width: 500px;
         width: 100%;
         justify-content: center;
@@ -36,7 +49,7 @@ export const PesquisaContainer = styled.div`
 
     @media (max-width: 570px) {
         gap: 20px;
-    }
+    } */
 `;
 
 export const SelectionFiltro = styled.select`
@@ -49,6 +62,10 @@ export const SelectionFiltro = styled.select`
     border-radius: 5px;
     padding: 16px;
     font-size: 16px;
+
+    @media (max-width: 330px) {
+        width: 100%;
+    }
 `;
 export const DivGaleria = styled.div`
     display: flex;
@@ -104,14 +121,26 @@ export const LivroContainer = styled.ul`
     gap: 4rem;
     margin: 96px auto;
     width: 90%;
+    justify-items: center;
 
     @media (max-width: 480px) {
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
+        margin: 40px auto 40px auto;
     }
 `;
 
 export const Image = styled.img`
     background-image: url('${(props) => props.src}');
+`;
+
+export const ContainerBiblioteca = styled.section`
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 5px;
+    margin: 24px;
+    position: relative;
 `;

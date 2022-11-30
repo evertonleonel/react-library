@@ -37,35 +37,37 @@ const BibliotecaPesquisar = () => {
     }
 
     return (
-        <PesquisaContainer>
-            <DivBuscar>
-                <ImagemIcone src={Lupa} />
-                <InputGeral
-                    style={{
-                        paddingLeft: '49px',
-                        outline: '0',
-                        border: '0',
-                        font: 'italic normal normal 16px/21px Roboto',
-                    }}
-                    onChange={inputChange}
-                    placeholder={'Pesquisar livro...'}
-                />
-                <Button
-                    onClick={buscarFiltros}
-                    height={'37px'}
-                    style={{
-                        maxWidth: '82px',
-                        border: 'none',
-                        fontWeight: 'normal',
-                        marginRight: '8px',
-                    }}
-                >
-                    Buscar
-                </Button>
-            </DivBuscar>
+        <div style={{ margin: '0 10px' }}>
+            <PesquisaContainer>
+                <DivBuscar>
+                    <ImagemIcone src={Lupa} />
+                    <InputGeral
+                        style={{
+                            paddingLeft: '49px',
+                            outline: '0',
+                            border: '0',
+                            font: 'italic normal normal 16px/21px Roboto',
+                        }}
+                        onChange={inputChange}
+                        placeholder={'Pesquisar livro...'}
+                    />
+                    <Button
+                        onClick={buscarFiltros}
+                        height={'37px'}
+                        style={{
+                            maxWidth: '82px',
+                            border: 'none',
+                            fontWeight: 'normal',
+                            marginRight: '8px',
+                        }}
+                    >
+                        Buscar
+                    </Button>
+                </DivBuscar>
 
-            <BibliotecaFiltro onChange={filtroChange} />
-        </PesquisaContainer>
+                <BibliotecaFiltro onChange={filtroChange} />
+            </PesquisaContainer>
+        </div>
     );
 };
 

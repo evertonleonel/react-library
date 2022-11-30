@@ -30,8 +30,7 @@ export const ContainerMain = styled.main`
     position: relative;
 
     @media (max-width: 920px) {
-        margin-right: 20px;
-        margin-left: 20px;
+        margin: 24px;
     }
 
     @media (max-width: 630px) {
