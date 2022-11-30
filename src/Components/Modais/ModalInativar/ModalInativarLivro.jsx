@@ -46,30 +46,33 @@ const ModalInativarLivro = ({
     return (
         <Modal>
             <InativarLivro>
-                <h2>Inativar Livro</h2>
-                <form>
-                    <TextAreaModal
-                        label={'Descrição'}
-                        name={descricao}
-                        required
-                        {...descricao}
-                    />
+                <div className="divInativar">
+                    <h2>Inativar Livro</h2>
+                    <form>
+                        <TextAreaModal
+                            label={'Descrição'}
+                            name={descricao}
+                            required
+                            {...descricao}
+                        />
 
-                    <Button
-                        onClick={handleSubmit}
-                        style={{
-                            color: '#ED5E5E',
-                            border: '1px solid #ed5e5e',
-                            backgroundColor: '#fff',
-                            alignSelf: 'flex-end',
-                            fontSize: '16px',
-                            maxWidth: '101px',
-                            textTransform: 'none',
-                        }}
-                    >
-                        Inativar
-                    </Button>
-                </form>
+                        <Button
+                            onClick={handleSubmit}
+                            style={{
+                                color: '#ED5E5E',
+                                border: '1px solid #ed5e5e',
+                                backgroundColor: '#fff',
+                                alignSelf: 'flex-end',
+                                fontSize: '16px',
+                                width: '101px',
+                                height: '53px',
+                                textTransform: 'none',
+                            }}
+                        >
+                            Inativar
+                        </Button>
+                    </form>
+                </div>
                 <ModalBotaoFechar onClick={onClick} setModalLivro={true} />
             </InativarLivro>
         </Modal>

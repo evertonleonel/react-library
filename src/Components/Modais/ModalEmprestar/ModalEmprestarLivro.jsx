@@ -65,7 +65,6 @@ const ModalEmprestarLivro = ({
 
         setFecharModal(onClick);
     }
-    console.log(livroParaEmprestar, 'livro para emprestar');
 
     return (
         <Modal>

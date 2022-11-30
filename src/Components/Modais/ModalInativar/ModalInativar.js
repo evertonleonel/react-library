@@ -3,8 +3,6 @@ import { animationModal } from '../../GlobalStyles/styles';
 
 export const InativarLivro = styled.div`
     background-color: #fff;
-    padding: 40px;
-    height: 336px;
     max-width: 804px;
     width: 100%;
     position: absolute;
@@ -13,8 +11,15 @@ export const InativarLivro = styled.div`
     animation: ${animationModal} 0.3s forwards;
 
     @media (max-width: 90rem) {
-        padding: 2rem calc(2rem + 15px) 2rem 2rem;
         width: 90%;
+    }
+
+    .divInativar {
+        padding: 4rem;
+
+        @media (max-width: 50rem) {
+            padding: 2rem;
+        }
     }
 
     h2 {
@@ -24,7 +29,6 @@ export const InativarLivro = styled.div`
     }
 
     form {
-        width: 100%;
         display: flex;
         flex-direction: column;
 

@@ -21,7 +21,7 @@ export const Modal = styled.div`
 export const ImagemLivro = styled.img`
     width: 27.2rem;
     height: 39rem;
-    object-fit: contain;
+    object-fit: cover;
 `;
 
 export const ModalLivroContent = styled.div`
@@ -43,9 +43,9 @@ export const ModalLivroContent = styled.div`
     }
 
     @media (max-width: 4rem) {
-        height: 100%;
         flex-wrap: wrap;
         width: 100%;
+        height: 100%;
     }
 `;
 
@@ -53,6 +53,20 @@ export const ContainerEsquerdo = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    @media (max-width: 900px) {
+        margin-top: 200px;
+        gap: 20px;
+    }
+
+    @media (max-width: 620px) {
+        margin-top: 250px;
+        gap: 10px;
+    }
+
+    @media (max-width: 400px) {
+        margin-top: 350px;
+    }
 `;
 
 export const ContainerDireito = styled.div`
@@ -114,16 +128,16 @@ export const ContainerPrincipal = styled.div`
     gap: 40px;
     padding: 70px 40px 40px;
     position: relative;
-    overflow: auto;
 
     @media (max-width: 900px) {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding: 35px 20px 20px;
+
         gap: 20px;
         width: 55rem;
+        overflow: auto;
     }
 
     @media (max-width: 620px) {
@@ -158,8 +172,8 @@ export const BotoesModal = styled.div`
     }
 
     @media (max-width: 400px) {
-        flex-direction: column;
-        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
     }
 `;
 
@@ -185,6 +199,18 @@ export const ModalExtraDados = styled.div`
         @media (max-width: 90rem) {
             width: 100%;
             overflow: auto;
+        }
+
+        th {
+            padding-right: 72px;
+
+            @media (max-width: 901px) {
+                padding-right: 10px;
+            }
+
+            @media (max-width: 621px) {
+                padding-right: 5px;
+            }
         }
 
         thead {

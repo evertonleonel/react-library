@@ -124,7 +124,11 @@ const ModalLivros = ({ livroSelecionado, onClick }) => {
                     <ModalLivroContent>
                         <ContainerPrincipal>
                             <ContainerEsquerdo>
-                                {livros && <ImagemLivro src={livros.image} />}
+                                <div>
+                                    {livros && (
+                                        <ImagemLivro src={livros.image} />
+                                    )}
+                                </div>
                                 {devolvido && ultimoEmprestimo ? (
                                     <Button
                                         onClick={devolverLivro}
