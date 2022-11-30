@@ -17,25 +17,36 @@ export const EditarLivro = styled.form`
     gap: 48px;
     margin: 167px auto;
 
+    @media (max-width: 1030px) {
+        gap: 24px;
+
+        div {
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
     .botoes {
         width: 14.3rem;
         height: 5.3rem;
         font-size: clamp(14px, 16px, 18px);
-        font-weight: 500;
+        font-weight: 600;
         text-align: center;
         text-transform: uppercase;
         cursor: pointer;
     }
 
     @media (max-width: 1030px) {
-        margin-bottom: 50px;
-        display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
-        margin: 167px 30px;
+        margin: 167px auto;
     }
 
-    @media (max-width: 830px) {
+    @media (max-width: 720px) {
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
         div {
             flex-wrap: wrap;
             align-items: center;
@@ -72,6 +83,12 @@ export const ImgCapa = styled.label`
 export const InputContainer = styled.div`
     display: flex;
     gap: 24px;
+    position: relative;
+
+    label {
+        position: absolute;
+        top: 0;
+    }
 
     .titulo {
         margin-bottom: 24px;
@@ -82,7 +99,7 @@ export const InputContainer = styled.div`
     }
 
     .sinopse {
-        grid-area: sinopse;
+        margin-bottom: 24px;
     }
 
     .genero {
@@ -94,8 +111,14 @@ export const InputContainer = styled.div`
         position: relative;
     }
 
-    @media (max-width: 1030px) {
-        flex-wrap: wrap;
+    @media (max-width: 80rem) {
+        margin: 0 10px;
+    }
+
+    .inputsDireito {
+        @media (max-width: 721px) {
+            width: 100%;
+        }
     }
 `;
 export const DivBotoes = styled.div`

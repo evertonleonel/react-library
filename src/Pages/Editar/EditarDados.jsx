@@ -125,7 +125,7 @@ const EditarDados = () => {
                 </div>
                 <div>
                     <InputContainer>
-                        <div style={{ maxWidth: '350px' }}>
+                        <div style={{ maxWidth: '350px', width: '100%' }}>
                             <InputPadrao
                                 required
                                 label={'Título'}
@@ -149,7 +149,10 @@ const EditarDados = () => {
                                 }
                             />
                         </div>
-                        <div style={{ maxWidth: '350px' }}>
+                        <div
+                            className="inputsDireito"
+                            style={{ maxWidth: '350px' }}
+                        >
                             <InputPadrao
                                 required
                                 label={'Autor'}

@@ -56,7 +56,7 @@ export const NovoLivro = styled.form`
         width: 14.3rem;
         height: 5.3rem;
         font-size: clamp(14px, 16px, 18px);
-        font-weight: 500;
+        font-weight: 600;
         text-align: center;
         text-transform: uppercase;
         cursor: pointer;
@@ -115,6 +115,12 @@ export const InputContainer = styled.div`
     @media (max-width: 80rem) {
         margin: 0 10px;
     }
+
+    .inputsDireito {
+        @media (max-width: 721px) {
+            width: 100%;
+        }
+    }
 `;
 export const DivBotoes = styled.div`
     width: 100%;
@@ -136,7 +142,7 @@ export const ImagemEscolhida = styled.img`
 export const SelectionFiltro = styled.select`
     width: 100%;
     height: 53px;
-    font-size: clamp(16px, 18px, 21px);
+    font-size: 16px;
     background-color: #ffffff;
     color: #133052;
     border-color: #133052;

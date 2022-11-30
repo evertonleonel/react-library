@@ -2,7 +2,7 @@ import React from 'react';
 
 const Options = ({ item, value, ...props }) => {
     return (
-        <option {...props} value={value}>
+        <option style={{ fontSize: '16px' }} {...props} value={value}>
             {item}
         </option>
     );

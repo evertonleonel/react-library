@@ -120,7 +120,10 @@ const CadastroDados = () => {
                                 {...sinopse}
                             />
                         </div>
-                        <div style={{ maxWidth: '350px' }}>
+                        <div
+                            className="inputsDireito"
+                            style={{ maxWidth: '350px' }}
+                        >
                             <InputPadrao
                                 required
                                 label={'Autor'}

@@ -34,7 +34,7 @@ export const LoginButton = styled.button`
 
     &:disabled {
         opacity: 0.5;
-        cursor: wait;
+        cursor: not-allowed;
     }
 `;
 
@@ -111,15 +111,14 @@ export const InputTextArea = styled.textarea`
     width: 353px;
     height: 129px;
     resize: none;
-    padding: 16px;
+    padding: 16px 29px 16px 16px;
     background-color: #ffffff;
-    color: #133052;
+    color: #3e4756;
     text-align: left;
-    font-size: clamp(16px, 18px, 21px);
+    font-family: 'Roboto', sans-serif;
     border-radius: 5px;
     border: 1px solid #133052;
     outline: none;
-    box-sizing: border-box;
     font-size: 16px;
 
     &::placeholder {
@@ -139,8 +138,9 @@ export const ContainerTextArea = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        top: 16px;
-        left: 16px;
+        top: 0;
+        left: 0;
+        margin: 16px;
         width: 57px;
         height: 21px;
         color: #133052;
@@ -152,8 +152,9 @@ export const ContainerTextArea = styled.div`
     textarea:focus + label,
     textarea:valid + label {
         font-size: 13px;
-        top: -14px;
-        left: 8px;
+        top: -12px;
+        left: 4px;
+        margin: 0;
         background-color: #fff;
         pointer-events: none;
     }
@@ -167,8 +168,9 @@ export const ContaierInputPadrao = styled.div`
         display: flex;
         align-items: center;
         justify-content: center;
-        top: 12%;
-        left: 16px;
+        top: 0;
+        left: 0;
+        margin: 16px;
         color: #133052;
         font-size: 1.6rem;
         cursor: text;
@@ -179,8 +181,8 @@ export const ContaierInputPadrao = styled.div`
     input:focus + label,
     input:valid + label {
         font-size: 13px;
-        top: -14px;
-        left: 8px;
+        top: -24px;
+        left: -4px;
         background-color: #fff;
         pointer-events: none;
     }
@@ -219,10 +221,10 @@ export const InputTextAreaModal = styled.textarea`
     resize: none;
     padding: 16px;
     background-color: #ffffff;
-    color: #133052;
+    color: #3e4756;
     text-align: left;
-    font-size: clamp(16px, 18px, 21px);
     border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
     border: 1px solid #133052;
     outline: none;
     box-sizing: border-box;
