@@ -64,6 +64,7 @@ export const Div = styled.div`
     height: 224px;
     border-radius: 5px;
     background-color: #f4f4f4;
+
     transition: background-color 300ms ease-in-out;
     transition: 0.3s;
 
@@ -73,5 +74,16 @@ export const Div = styled.div`
         transition: box-shadow 300ms ease-in-out;
         background-color: #ffc501;
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    }
+`;
+export const HomeContainer = styled.section`
+    background-color: #fff;
+    margin: 24px;
+    height: calc(100vh - 144px);
+    display: flex;
+    position: relative;
+
+    @media (max-width: 1030px) {
+        height: 100%;
     }
 `;

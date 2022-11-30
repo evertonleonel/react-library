@@ -63,8 +63,10 @@ export const NovoLivro = styled.form`
     }
 
     @media (max-width: 1030px) {
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
-        margin: 167px 30px;
+        margin: 167px auto;
     }
 
     @media (max-width: 720px) {
@@ -110,8 +112,8 @@ export const InputContainer = styled.div`
         position: relative;
     }
 
-    @media (max-width: 1030px) {
-        flex-wrap: wrap;
+    @media (max-width: 80rem) {
+        margin: 0 10px;
     }
 `;
 export const DivBotoes = styled.div`
@@ -120,10 +122,6 @@ export const DivBotoes = styled.div`
     align-items: center;
     justify-content: flex-end;
     gap: 24px;
-
-    @media (max-width: 1030px) {
-        justify-content: flex-start;
-    }
 `;
 
 export const ImagemEscolhida = styled.img`

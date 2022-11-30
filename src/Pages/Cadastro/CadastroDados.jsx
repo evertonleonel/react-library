@@ -102,7 +102,7 @@ const CadastroDados = () => {
 
                 <div>
                     <InputContainer>
-                        <div style={{ maxWidth: '350px' }}>
+                        <div style={{ maxWidth: '350px', width: '100%' }}>
                             <InputPadrao
                                 required
                                 label={'Título'}

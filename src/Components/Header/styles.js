@@ -28,7 +28,7 @@ export const CabecalhoLogout = styled.div`
     position: relative;
     cursor: pointer;
 
-    p {
+    .usuario {
         margin-left: 8px;
         margin-right: 4px;
 
@@ -60,9 +60,9 @@ export const DropSair = styled.div`
     width: 148px;
     height: 57px;
     padding: 15px;
-    margin: 16px 0;
-    top: 26px;
-    right: 0;
+    margin: 25px;
+    top: 16px;
+    right: -15px;
     border-radius: 5px;
     background-color: #f4f4f4;
     transition: 0.3s;
@@ -70,7 +70,12 @@ export const DropSair = styled.div`
 
     &:hover {
         transition: all 300ms;
-        color: #ffc501;
+        color: #000;
         background-color: #dde;
+    }
+
+    p:hover {
+        transition: all 300ms;
+        color: #000;
     }
 `;
