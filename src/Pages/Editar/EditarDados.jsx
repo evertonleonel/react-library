@@ -168,6 +168,7 @@ const EditarDados = () => {
                             <SelectionFiltro
                                 className="genero"
                                 onChange={filtroChange}
+                                value={livroSelecionado.genre}
                             >
                                 <Options disabled item="Gênero" />
 

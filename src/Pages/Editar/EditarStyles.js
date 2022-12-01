@@ -145,7 +145,7 @@ export const ImagemEscolhida = styled.img`
 export const SelectionFiltro = styled.select`
     width: 100%;
     height: 53px;
-    font-size: clamp(16px, 18px, 21px);
+    font-size: 16px;
     background-color: #ffffff;
     color: #133052;
     border: 1px solid #133052;

@@ -29,7 +29,6 @@ const Input = ({
             <span>
                 <img src={src} />
             </span>
-            {error && <ErrorInput>{error}</ErrorInput>}
         </InputLoginContainer>
     );
 };

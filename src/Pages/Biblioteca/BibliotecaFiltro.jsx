@@ -6,7 +6,7 @@ const BibliotecaFiltro = ({ onChange, id }) => {
     return (
         <>
             <SelectionFiltro onChange={onChange} id={id}>
-                <Options disabled item="Filtrar" />
+                <Options value="" item="Filtrar" />
                 <Options value="genre" item="Gênero" />
                 <Options value="author" item="Autor" />
                 <Options value="systemEntryDate" item="Data de Entrada" />

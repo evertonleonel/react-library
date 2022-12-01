@@ -20,6 +20,7 @@ const BibliotecaPesquisar = () => {
 
     function filtroChange(event) {
         const { value } = event.target;
+
         setSelectFiltro(value);
     }
 

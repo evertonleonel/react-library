@@ -136,14 +136,14 @@ const CadastroDados = () => {
                                 className="genero"
                                 onChange={filtroChange}
                             >
-                                <Options disabled item="Filtrar" />
-                                <Options value="Gênero" item="Gênero" />
-                                <Options value="Autor" item="Autor" />
+                                <Options disabled item="Gênero" />
+                                <Options value="Fantasia" item="Fantasia" />
                                 <Options
-                                    value="Data de Entrada"
-                                    item="Data de Entrada"
+                                    value="Ação e Aventura"
+                                    item="Ação e Aventura"
                                 />
-                                <Options value="Sinopse" item="Sinopse" />
+                                <Options value="Horror" item="Horror" />
+                                <Options value="Romance" item="Romance" />
                             </SelectionFiltro>
 
                             <InputGeral
