@@ -1,14 +1,11 @@
 import React from 'react';
-
-import useForm from '../../Hooks/useForm';
 import useFetch from '../../Hooks/useFetch';
-import { BOOKS_POST, EDIT_LIVRO_POST } from '../../Services/api';
+import { EDIT_LIVRO_POST } from '../../Services/api';
 import { converterEmBase64 } from '../../Services/api';
 import { v4 as uuidv4 } from 'uuid';
 import {
     EditarContainer,
     EditarLivro,
-    EditTextArea,
     ImgCapa,
     InputContainer,
     SelectionFiltro,
@@ -168,7 +165,7 @@ const EditarDados = () => {
                             <SelectionFiltro
                                 className="genero"
                                 onChange={filtroChange}
-                                value={livroSelecionado.genre}
+                                defaultValue={livroSelecionado.genre}
                             >
                                 <Options disabled item="Gênero" />
 
