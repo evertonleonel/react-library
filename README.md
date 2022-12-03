@@ -8,7 +8,7 @@ Este Projeto foi desenvolvido como forma de estudo e aplicação de novos conhec
 
 ## Como iniciar este projeto
 
-\*Fluxo de instalação:
+-   Fluxo de instalação:
 
 -   `npm install -g json-server`
 
@@ -16,22 +16,23 @@ Este Projeto foi desenvolvido como forma de estudo e aplicação de novos conhec
 
     -   `"backend": "json-server --watch db.json --port 5000",`
 
-\*exemplo visual:
+-   exemplo visual:
 
 <div align="left">
   <img  alt="html5" src="https://user-images.githubusercontent.com/105321683/205415353-0bd256ca-b2a8-4e2e-9e72-c0ae9d5858f5.png" width="350px" />
 </div><br/>
 
-\*Iniciando o JSON server
+-Iniciando o JSON server
 
-\*`json-server --watch db.json`
+-`json-server --watch db.json`
 
 <br>
 
 ## Navegando
 
-_Efetuando login
-_`Acesse as senhas disponíveis no arquivo db.jon`
+### Efetuando login
+
+Acesse as senhas disponíveis no arquivo 'db.json'
 
 <br>
 
