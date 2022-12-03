@@ -10,7 +10,7 @@ Este Projeto foi desenvolvido como forma de estudo e aplicação de novos conhec
 
 -   Fluxo de instalação:
 
--   `npm install -g json-server`
+    -   `npm install -g json-server`
 
 -   Configurando o package.json - adicione em 'scripts' o código abaixo:
 
@@ -22,9 +22,9 @@ Este Projeto foi desenvolvido como forma de estudo e aplicação de novos conhec
   <img  alt="html5" src="https://user-images.githubusercontent.com/105321683/205415353-0bd256ca-b2a8-4e2e-9e72-c0ae9d5858f5.png" width="350px" />
 </div><br/>
 
--Iniciando o JSON server
+-   Iniciando o JSON server
 
--`json-server --watch db.json`
+    -   `json-server --watch db.json`
 
 <br>
 
