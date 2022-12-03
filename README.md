@@ -6,31 +6,33 @@ Este Projeto foi desenvolvido como forma de estudo e aplicação de novos conhec
 
 ### Importante - Este Projeto faz uso do JSON Server.
 
-Para rodar a aplicação será necessário instalar o JSON Server após clonar esta aplicação.
+## Como iniciar este projeto
 
-### Fluxo de instalação
+\*Fluxo de instalação:
 
-npm install -g json-server
+-   `npm install -g json-server`
 
-Após instalar, acesse o package.json e o configure da seguinte forma na parte de 'scripts':
+-   Configurando o package.json - adicione em 'scripts' o código abaixo:
 
-"backend": "json-server --watch db.json --port 5000",
+    -   `"backend": "json-server --watch db.json --port 5000",`
 
-exemplo:
+\*exemplo visual:
 
 <div align="left">
-  <img  alt="html5" src="https://user-images.githubusercontent.com/105321683/205415353-0bd256ca-b2a8-4e2e-9e72-c0ae9d5858f5.png" width="250px" />
+  <img  alt="html5" src="https://user-images.githubusercontent.com/105321683/205415353-0bd256ca-b2a8-4e2e-9e72-c0ae9d5858f5.png" width="350px" />
 </div><br/>
 
-Para iniciar o JSON server execute no seu terminal o comando
+\*Iniciando o JSON server
 
-json-server --watch db.json
+\*`json-server --watch db.json`
 
 <br>
 
 ## Navegando
 
-Para efetuar o login, acesse a pasta 'data', abra o arquivo 'data.json'. Utilize os logins e senhas disponíveis.
+_Efetuando login
+_`Acesse as senhas disponíveis no arquivo db.jon`
+
 <br>
 
 <div align="center">
