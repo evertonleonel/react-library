@@ -26,6 +26,16 @@ Este Projeto foi desenvolvido como forma de estudo e aplicação de novos conhec
 
     -   `json-server --watch db.json`
 
+-   Startando no terminal
+
+    -   `npm start`
+
+-   Inicie o backend
+
+    -   `npm run backend`
+
+-   Abra o Browser e acesse 'http://localhost:5000/'
+
 <br>
 
 ## Navegando
@@ -59,5 +69,4 @@ Acesse as senhas disponíveis no arquivo 'db.json'
   <img align="center" alt="css" src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" />
   <img align="center" alt="Carlos-React" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg" style="max-width: 100%;">
   <img align="center" alt="js" src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
-
 </div><br/>
